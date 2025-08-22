@@ -267,7 +267,9 @@ h6 {
 }
 
 .navmenu a,
-.navmenu a:focus {
+.navmenu a:focus:not(.social-links a) {
+  /* .navmenu a:not(.social-links a),
+.navmenu a:focus:not(.social-links a) { */
   color: var(--nav-dropdown-color);
   padding: 10px 20px;
   font-family: var(--nav-font);
@@ -348,6 +350,12 @@ h6 {
   right: 0;
   background-color: var(--nav-mobile-background-color);
   transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .mobile-nav-active .navmenu {
+    overflow-y: scroll;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -498,6 +506,7 @@ section,
   padding: 0;
   line-height: 1px;
   margin: 0;
+  margin-bottom: 20px;
   letter-spacing: 0.5px;
   position: relative;
 }
@@ -1029,7 +1038,7 @@ section,
   font-weight: 700;
   color: var(--accent-color);
   font-size: 18px;
-  min-width: 80px;
+  min-width: 120px;
   margin-right: 20px;
 }
 
