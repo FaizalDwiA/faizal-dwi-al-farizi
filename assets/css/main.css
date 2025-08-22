@@ -520,6 +520,13 @@ section,
   margin: 10px 10px;
 }
 
+@media (max-width: 768px) {
+  .section-title h2::after {
+    width: 190px;
+    margin: 40px 0px 0px;
+  }
+}
+
 .section-title p {
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   margin: 5px 0 0 0;
@@ -841,7 +848,7 @@ section,
 @media (max-width: 768px) {
   .hero .floating-card.card-1 {
     top: 5%;
-    left: -5%;
+    left: -15%;
   }
 }
 
@@ -853,8 +860,8 @@ section,
 
 @media (max-width: 768px) {
   .hero .floating-card.card-2 {
-    top: 70%;
-    right: -10%;
+    top: 60%;
+    right: -15%;
   }
 }
 
@@ -866,8 +873,8 @@ section,
 
 @media (max-width: 768px) {
   .hero .floating-card.card-3 {
-    bottom: 10%;
-    left: 0%;
+    bottom: -15%;
+    left: -15%;
   }
 }
 
