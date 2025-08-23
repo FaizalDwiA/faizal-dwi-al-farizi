@@ -522,7 +522,7 @@ section,
 
 @media (max-width: 768px) {
   .section-title h2::after {
-    width: 190px;
+    width: 100%;
     margin: 40px 0px 0px;
   }
 }
@@ -2014,7 +2014,7 @@ section,
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-meta {
   color: var(--accent-color);
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -2023,7 +2023,7 @@ section,
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-title {
   color: var(--contrast-color);
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 600;
   margin: 0 0 20px;
 }
