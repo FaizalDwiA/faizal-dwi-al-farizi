@@ -554,7 +554,7 @@ section,
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("../img/bg/hero-bg.jpg") no-repeat center center;
+  background: url("../img/bg/hero-bg.webp") no-repeat center center;
   background-size: cover;
   /* opacity: 0.08; */
   z-index: 1;
