@@ -40,7 +40,7 @@
 
 	<script src="assets/js/projects-data.js"></script>
 
-	<body class="portfolio-details-page">
+	<body class="projects-details-page">
 		<header id="header" class="header d-flex align-items-center fixed-top">
 			<div
 				class="container-fluid position-relative d-flex align-items-center justify-content-between"
@@ -60,26 +60,26 @@
 				<div
 					class="container d-lg-flex justify-content-between align-items-center"
 				>
-					<h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
+					<h1 class="mb-2 mb-lg-0">Projects Details</h1>
 					<nav class="breadcrumbs">
 						<ol>
 							<li><a href="index.html">Home</a></li>
-							<li class="current">Portfolio Details</li>
+							<li class="current">Projects Details</li>
 						</ol>
 					</nav>
 				</div>
 			</div>
 			<!-- End Page Title -->
 
-			<!-- Portfolio Details Section -->
-			<section id="portfolio-details" class="portfolio-details section">
-				<div class="container" data-aos="fade-up" data-aos-delay="100">
+			<!-- Projects Details Section -->
+			<section id="projects-details" class="projects-details section">
+				<div class="container" data-aos-delay="100">
 					<div class="row gy-4">
 						<div class="col-lg-6" data-aos="fade-right">
-							<div class="portfolio-details-media">
+							<div class="projects-details-media">
 								<div class="main-image">
 									<div
-										class="portfolio-details-slider swiper init-swiper"
+										class="projects-details-slider swiper init-swiper"
 										data-aos="zoom-in"
 									>
 										<script type="application/json" class="swiper-config">
@@ -109,22 +109,22 @@
 										<div class="swiper-wrapper">
 											<div class="swiper-slide">
 												<img
-													src="assets/img/portfolio/portfolio-5.webp"
-													alt="Portfolio Image"
+													src="assets/img/Projects/Projects-5.webp"
+													alt="Projects Image"
 													class="img-fluid"
 												/>
 											</div>
 											<div class="swiper-slide">
 												<img
-													src="assets/img/portfolio/portfolio-7.webp"
-													alt="Portfolio Image"
+													src="assets/img/Projects/Projects-7.webp"
+													alt="Projects Image"
 													class="img-fluid"
 												/>
 											</div>
 											<div class="swiper-slide">
 												<img
-													src="assets/img/portfolio/portfolio-8.webp"
-													alt="Portfolio Image"
+													src="assets/img/Projects/Projects-8.webp"
+													alt="Projects Image"
 													class="img-fluid"
 												/>
 											</div>
@@ -134,11 +134,7 @@
 									</div>
 								</div>
 
-								<div
-									class="tech-stack-badges"
-									data-aos="fade-up"
-									data-aos-delay="300"
-								>
+								<div class="tech-stack-badges" data-aos-delay="300">
 									<span>Angular</span>
 									<span>Express.js</span>
 									<span>PostgreSQL</span>
@@ -149,7 +145,7 @@
 						</div>
 
 						<div class="col-lg-6" data-aos="fade-left">
-							<div class="portfolio-details-content">
+							<div class="projects-details-content">
 								<div class="project-meta">
 									<div class="badge-wrapper">
 										<span class="project-badge">UX/UI Design</span>
@@ -184,11 +180,7 @@
 									</p>
 								</div>
 
-								<div
-									class="project-features"
-									data-aos="fade-up"
-									data-aos-delay="300"
-								>
+								<div class="project-features" data-aos-delay="300">
 									<h3><i class="bi bi-stars"></i> Key Features</h3>
 									<div class="row g-3">
 										<div class="col-md-6">
@@ -226,22 +218,18 @@
 									</div>
 								</div>
 
-								<div
-									class="cta-buttons"
-									data-aos="fade-up"
-									data-aos-delay="400"
-								>
-									<a href="#" class="btn-view-project">View Live Project</a>
-									<a href="#" class="btn-next-project"
-										>Next Project <i class="bi bi-arrow-right"></i
-									></a>
+								<div class="cta-buttons" data-aos-delay="400">
+									<a href="index.html#projects" class="btn-next-project">
+										<i class="bi bi-arrow-left"></i> Kembali
+									</a>
+									<a href="" class="btn-view-project" id="viewLink">Melihat </a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<!-- /Portfolio Details Section -->
+			<!-- /Projects Details Section -->
 		</main>
 
 		<footer id="footer" class="footer dark-background">
@@ -300,8 +288,7 @@
 			const project = projectsData[projectId];
 
 			if (!project) {
-				document.querySelector(".main").innerHTML =
-					"<h2>Project tidak ditemukan 😢</h2>";
+				location.replace("index.html");
 			} else {
 				// Ganti elemen judul
 				document.querySelector(".project-title").textContent = project.title;
@@ -317,6 +304,7 @@
 				document.querySelector(".project-website a").href = project.website;
 				document.querySelector(".project-overview p.lead").textContent =
 					project.overview;
+				document.getElementById("viewLink").href = project.website;
 
 				// Ganti tech stack
 				const techContainer = document.querySelector(".tech-stack-badges");
@@ -341,13 +329,27 @@
 				swiperWrapper.innerHTML = project.images
 					.map(
 						(img) => `
-      <div class="swiper-slide">
-        <img src="${img}" alt="${project.title}" class="img-fluid"/>
-      </div>
-    `
+											<div class="swiper-slide">
+												<a href="${img}" class="glightbox" data-gallery="project-gallery">
+														<img src="${img}" alt="${project.title}" class="img-fluid"/>
+													</a>
+											</div>
+										`
 					)
 					.join("");
 			}
+
+			// --- Inisialisasi GLightbox ---
+			const glightbox = GLightbox({
+				selector: ".glightbox",
+				width: "30%", // tampil tidak terlalu besar
+				height: "auto",
+				touchNavigation: true,
+				loop: true,
+				closeButton: true,
+				zoomable: false,
+				draggable: true,
+			});
 		</script>
 	</body>
 </html>
