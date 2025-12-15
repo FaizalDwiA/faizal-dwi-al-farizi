@@ -22,7 +22,7 @@ const projectsData = {
 		client: "Personal Project",
 		date: "Juli 2024",
 		category: "Website",
-		website: "https://faizaldwia.github.io/sib/pages/waktu_sholat.html",
+		website: "https://faizaldwia.github.io/sib",
 		overview:
 			"Website sederhana berisi informasi kelas, waktu sholat, profil kampus, dosen, dan tautan penting. Dibuat sebagai proyek latihan desain antarmuka responsif.",
 		images: [
