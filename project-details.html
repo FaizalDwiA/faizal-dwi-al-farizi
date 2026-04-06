@@ -1,351 +1,685 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<title>Project Details - Faizal Dwi Al Farizi</title>
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Details — Faizal Dwi Al Farizi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="assets/img/icon.webp" rel="icon" />
 
-		<!-- Favicons -->
-		<link href="assets/img/icon.webp" rel="icon" />
+  <style>
+    :root {
+      --bg:  #080c10;
+      --bg2: #0d1117;
+      --bg3: #111820;
+      --card: #0f1923;
+      --border: #1e2d3d;
+      --accent:  #00d4ff;
+      --accent2: #7ee787;
+      --accent3: #ff6b6b;
+      --accent4: #ffd700;
+      --text: #cdd9e5;
+      --text-muted: #768390;
+      --text-dim: #444c56;
+      --glow:  0 0 20px rgba(0,212,255,0.3);
+      --glow2: 0 0 30px rgba(0,212,255,0.15);
+    }
 
-		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com" rel="preconnect" />
-		<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Quicksand:wght@300;400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-		<!-- Vendor CSS Files -->
-		<link
-			href="assets/vendor/bootstrap/css/bootstrap.min.css"
-			rel="stylesheet"
-		/>
-		<link
-			href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-			rel="stylesheet"
-		/>
-		<link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-		<link
-			href="assets/vendor/glightbox/css/glightbox.min.css"
-			rel="stylesheet"
-		/>
-		<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-		<!-- Main CSS File -->
-		<link href="assets/css/main.css" rel="stylesheet" />
-	</head>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-	<script src="assets/js/projects-data.js"></script>
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s ease;
+      box-shadow: var(--glow);
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(0,212,255,0.5);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transition: transform 0.15s ease, width 0.2s, height 0.2s;
+    }
 
-	<body class="projects-details-page">
-		<header id="header" class="header d-flex align-items-center fixed-top">
-			<div
-				class="container-fluid position-relative d-flex align-items-center justify-content-between"
-			>
-				<a href="index.html" class="logo d-flex align-items-center">
-					<!-- Uncomment the line below if you also wish to use an image logo -->
-					<!-- <img src="assets/img/logo.webp" alt=""> -->
-					<!-- Uncomment the line below if you also wish to use an text logo -->
-					<!-- <h1 class="sitename">Style</h1>  -->
-				</a>
-			</div>
-		</header>
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none; z-index: 0;
+    }
 
-		<main class="main">
-			<!-- Page Title -->
-			<div class="page-title light-background">
-				<div
-					class="container d-lg-flex justify-content-between align-items-center"
-				>
-					<h1 class="mb-2 mb-lg-0">Projects Details</h1>
-					<nav class="breadcrumbs">
-						<ol>
-							<li><a href="index.html">Home</a></li>
-							<li class="current">Projects Details</li>
-						</ol>
-					</nav>
-				</div>
-			</div>
-			<!-- End Page Title -->
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-			<!-- Projects Details Section -->
-			<section id="projects-details" class="projects-details section">
-				<div class="container" data-aos-delay="100">
-					<div class="row gy-4">
-						<div class="col-lg-6" data-aos="fade-right">
-							<div class="projects-details-media">
-								<div class="main-image">
-									<div
-										class="projects-details-slider swiper init-swiper"
-										data-aos="zoom-in"
-									>
-										<script type="application/json" class="swiper-config">
-											{
-												"loop": true,
-												"speed": 1000,
-												"autoplay": {
-													"delay": 6000
-												},
-												"effect": "creative",
-												"creativeEffect": {
-													"prev": {
-														"shadow": true,
-														"translate": [0, 0, -400]
-													},
-													"next": {
-														"translate": ["100%", 0, 0]
-													}
-												},
-												"slidesPerView": 1,
-												"navigation": {
-													"nextEl": ".swiper-button-next",
-													"prevEl": ".swiper-button-prev"
-												}
-											}
-										</script>
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<img
-													src="assets/img/Projects/Projects-5.webp"
-													alt="Projects Image"
-													class="img-fluid"
-												/>
-											</div>
-											<div class="swiper-slide">
-												<img
-													src="assets/img/Projects/Projects-7.webp"
-													alt="Projects Image"
-													class="img-fluid"
-												/>
-											</div>
-											<div class="swiper-slide">
-												<img
-													src="assets/img/Projects/Projects-8.webp"
-													alt="Projects Image"
-													class="img-fluid"
-												/>
-											</div>
-										</div>
-										<div class="swiper-button-prev"></div>
-										<div class="swiper-button-next"></div>
-									</div>
-								</div>
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem; color: var(--accent2); letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
 
-								<div class="tech-stack-badges" data-aos-delay="300">
-									<span>Angular</span>
-									<span>Express.js</span>
-									<span>PostgreSQL</span>
-									<span>GraphQL</span>
-									<span>Firebase</span>
-								</div>
-							</div>
-						</div>
+    .nav-back {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--text-muted);
+      text-decoration: none; letter-spacing: 0.1em;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back::before { content: '←'; color: var(--accent); }
 
-						<div class="col-lg-6" data-aos="fade-left">
-							<div class="projects-details-content">
-								<div class="project-meta">
-									<div class="badge-wrapper">
-										<span class="project-badge">UX/UI Design</span>
-									</div>
-									<div class="date-client">
-										<div class="meta-item">
-											<i class="bi bi-calendar-check"></i>
-											<span>September 2024</span>
-										</div>
-										<div class="meta-item">
-											<i class="bi bi-buildings"></i>
-											<span>DigitalCraft Solutions</span>
-										</div>
-									</div>
-								</div>
+    /* mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text-muted); border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .nav-toggle:hover span { background: var(--accent); }
 
-								<h2 class="project-title">
-									Innovative Financial Dashboard App
-								</h2>
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-toggle { display: flex; }
+    }
 
-								<div class="project-website">
-									<i class="bi bi-link-45deg"></i>
-									<a href="#" target="_blank">projectwebsite.example.com</a>
-								</div>
+    /* ── PAGE HERO (breadcrumb) ── */
+    .page-hero {
+      padding: 8rem 3rem 3rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(0,212,255,0.04), transparent);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .breadcrumb {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--text-dim);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb .sep { color: var(--text-dim); }
+    .page-hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800; color: #fff;
+    }
 
-								<div class="project-overview">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Maecenas varius tortor nibh, sit amet tempor nibh finibus
-										et. Aenean eu enim justo. Vestibulum aliquam hendrerit
-										molestie.
-									</p>
-								</div>
+    /* ── MAIN LAYOUT ── */
+    main { position: relative; z-index: 1; }
 
-								<div class="project-features" data-aos-delay="300">
-									<h3><i class="bi bi-stars"></i> Key Features</h3>
-									<div class="row g-3">
-										<div class="col-md-6">
-											<ul class="feature-list">
-												<li>
-													<i class="bi bi-check2-circle"></i> Real-time Data
-													Visualization
-												</li>
-												<li>
-													<i class="bi bi-check2-circle"></i> User Role
-													Management
-												</li>
-												<li>
-													<i class="bi bi-check2-circle"></i> Secure
-													Authentication
-												</li>
-											</ul>
-										</div>
-										<div class="col-md-6">
-											<ul class="feature-list">
-												<li>
-													<i class="bi bi-check2-circle"></i> Customizable
-													Dashboards
-												</li>
-												<li>
-													<i class="bi bi-check2-circle"></i> Data Export
-													Options
-												</li>
-												<li>
-													<i class="bi bi-check2-circle"></i> Multi-device
-													Support
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
+    .details-section {
+      padding: 4rem 3rem 6rem;
+    }
+    .details-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
 
-								<div class="cta-buttons" data-aos-delay="400">
-									<a href="index.html#projects" class="btn-next-project">
-										<i class="bi bi-arrow-left"></i> Kembali
-									</a>
-									<a href="" class="btn-view-project" id="viewLink">Melihat </a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- /Projects Details Section -->
-		</main>
+    @media (max-width: 900px) {
+      .details-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .details-section { padding: 3rem 1.5rem 5rem; }
+      .page-hero { padding: 7rem 1.5rem 2.5rem; }
+    }
 
-		<footer id="footer" class="footer dark-background">
-			<div class="container">
-				<div class="copyright text-center">
-					<p>
-						© <span>Copyright</span>
-						<strong class="px-1 sitename">Faizal Dwi Al Farizi</strong>
-						<span>All Rights Reserved</span>
-					</p>
-				</div>
-				<div class="social-links d-flex justify-content-center">
-					<a href=""><i class="bi bi-twitter-x"></i></a>
-					<a href=""><i class="bi bi-facebook"></i></a>
-					<a href=""><i class="bi bi-instagram"></i></a>
-					<a href=""><i class="bi bi-linkedin"></i></a>
-				</div>
-				<div class="credits">
-					Designed by <a href="https://faizaldwia.github.io/faizal-dwi-al-farizi">Faizal Dwi Al Farizi</a>
-				</div>
-			</div>
-		</footer>
+    /* ── IMAGE / SLIDER COLUMN ── */
+    .media-col {}
 
-		<!-- Scroll Top -->
-		<a
-			href="#"
-			id="scroll-top"
-			class="scroll-top d-flex align-items-center justify-content-center"
-			><i class="bi bi-arrow-up-short"></i
-		></a>
+    .swiper-container {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,212,255,0.06), 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .swiper-container img {
+      width: 100%; height: 320px;
+      object-fit: cover; display: block;
+      transition: opacity 0.5s ease;
+    }
+    .swiper-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(8,12,16,0.75);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+      z-index: 5;
+    }
+    .swiper-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .swiper-btn.prev { left: 0.8rem; }
+    .swiper-btn.next { right: 0.8rem; }
 
-		<!-- Vendor JS Files -->
-		<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="assets/vendor/php-email-form/validate.js"></script>
-		<script src="assets/vendor/aos/aos.js"></script>
-		<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-		<script src="assets/vendor/typed.js/typed.umd.js"></script>
-		<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-		<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-		<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-		<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-		<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    .swiper-dots {
+      display: flex; justify-content: center; gap: 0.4rem;
+      padding: 0.9rem 0 0.5rem;
+    }
+    .swiper-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--text-dim);
+      cursor: pointer; transition: background 0.2s, transform 0.2s;
+      border: none;
+    }
+    .swiper-dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
+      box-shadow: 0 0 8px var(--accent);
+    }
 
-		<!-- Main JS File -->
-		<script src="assets/js/main.js"></script>
+    /* Tech stack badges */
+    .tech-badges {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .tech-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: rgba(0,212,255,0.07);
+      border: 1px solid rgba(0,212,255,0.2);
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .tech-badge:hover {
+      background: rgba(0,212,255,0.14);
+      border-color: var(--accent);
+    }
 
-		<!-- Bismillah -->
-		<script>
-			// Ambil ID dari URL
-			const params = new URLSearchParams(window.location.search);
-			const projectId = params.get("id");
-			const project = projectsData[projectId];
+    /* ── CONTENT COLUMN ── */
+    .content-col {}
 
-			if (!project) {
-				location.replace("index.html");
-			} else {
-				// Ganti elemen judul
-				document.querySelector(".project-title").textContent = project.title;
-				document.querySelector(".project-meta .project-badge").textContent =
-					project.category;
-				document.querySelector(
-					".meta-item i.bi-calendar-check + span"
-				).textContent = project.date;
-				document.querySelector(".meta-item i.bi-buildings + span").textContent =
-					project.client;
-				document.querySelector(".project-website a").textContent =
-					project.website;
-				document.querySelector(".project-website a").href = project.website;
-				document.querySelector(".project-overview p.lead").textContent =
-					project.overview;
-				document.getElementById("viewLink").href = project.website;
+    /* Meta row */
+    .project-meta-row {
+      display: flex; align-items: center; gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+    .project-cat-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-weight: 700;
+    }
+    .project-meta-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--text-muted);
+    }
+    .project-meta-item .icon { color: var(--accent2); }
 
-				// Ganti tech stack
-				const techContainer = document.querySelector(".tech-stack-badges");
-				techContainer.innerHTML = project.tech
-					.map((t) => `<span>${t}</span>`)
-					.join("");
+    /* Title */
+    .project-title-h {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.2; margin-bottom: 0.9rem;
+    }
 
-				// Ganti fitur
-				const featuresLists = document.querySelectorAll(".feature-list");
-				const half = Math.ceil(project.features.length / 2);
-				featuresLists[0].innerHTML = project.features
-					.slice(0, half)
-					.map((f) => `<li><i class="bi bi-check2-circle"></i> ${f}</li>`)
-					.join("");
-				featuresLists[1].innerHTML = project.features
-					.slice(half)
-					.map((f) => `<li><i class="bi bi-check2-circle"></i> ${f}</li>`)
-					.join("");
+    /* Website link */
+    .project-url {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(0,212,255,0.35);
+      padding-bottom: 1px;
+      margin-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+    .project-url:hover { color: #fff; border-color: #fff; }
 
-				// Ganti gambar utama
-				const swiperWrapper = document.querySelector(".swiper-wrapper");
-				swiperWrapper.innerHTML = project.images
-					.map(
-						(img) => `
-											<div class="swiper-slide">
-												<a href="${img}" class="glightbox" data-gallery="project-gallery">
-														<img src="${img}" alt="${project.title}" class="img-fluid"/>
-													</a>
-											</div>
-										`
-					)
-					.join("");
-			}
+    /* Overview */
+    .project-overview {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+    }
 
-			// --- Inisialisasi GLightbox ---
-			const glightbox = GLightbox({
-				selector: ".glightbox",
-				width: "30%", // tampil tidak terlalu besar
-				height: "auto",
-				touchNavigation: true,
-				loop: true,
-				closeButton: true,
-				zoomable: false,
-				draggable: true,
-			});
-		</script>
-	</body>
+    /* Features */
+    .features-block {
+      margin-bottom: 2rem;
+    }
+    .features-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--accent2);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .features-label::before { content: '$ '; color: var(--text-dim); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.87rem; color: var(--text);
+      line-height: 1.5;
+    }
+    .feature-item::before {
+      content: '✓';
+      color: var(--accent2);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* CTA Buttons */
+    .cta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .btn-primary {
+      padding: 0.72rem 1.6rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em;
+      border: none; border-radius: 6px;
+      cursor: pointer; text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { box-shadow: var(--glow); transform: translateY(-2px); }
+
+    .btn-outline {
+      padding: 0.72rem 1.6rem;
+      background: transparent;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; letter-spacing: 0.05em;
+      border: 1px solid var(--border); border-radius: 6px;
+      cursor: pointer; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+    .footer-copy span { color: var(--text-muted); }
+    .footer-copy a { color: var(--accent); text-decoration: none; }
+    .footer-copy a:hover { text-decoration: underline; }
+
+    .footer-socials {
+      display: flex; justify-content: center; gap: 1.2rem;
+      list-style: none; margin-bottom: 1rem;
+    }
+    .footer-socials a {
+      font-size: 1.05rem; color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .footer-socials a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .footer-credits {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; color: var(--text-dim);
+    }
+    .footer-credits a { color: var(--accent2); text-decoration: none; }
+
+    /* ── SCROLL TOP ── */
+    #scroll-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 1.1rem;
+      text-decoration: none;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, border-color 0.2s, color 0.2s;
+      z-index: 50;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FADE IN ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .cta-row { flex-direction: column; }
+      .btn-primary, .btn-outline { justify-content: center; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+
+  <script src="assets/js/projects-data.js"></script>
+</head>
+
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">faizal<span>.dev</span></a>
+    <a href="index.html#projects" class="nav-back">Kembali ke Projects</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-hero-title" id="pageHeroTitle">Project Details</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <a href="index.html#projects">Projects</a>
+        <span class="sep">/</span>
+        <span id="breadcrumbTitle">Detail</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <section class="details-section">
+      <div class="details-inner">
+
+        <!-- LEFT: Media -->
+        <div class="media-col fade-in">
+          <div class="swiper-container">
+            <div id="swiperWrapper">
+              <!-- slides injected by JS -->
+              <img src="assets/img/Projects/Projects-5.webp" alt="Project" id="swiperImg" />
+            </div>
+            <button class="swiper-btn prev" id="swBtnPrev">‹</button>
+            <button class="swiper-btn next" id="swBtnNext">›</button>
+          </div>
+          <div class="swiper-dots" id="swiperDots"></div>
+          <div class="tech-badges" id="techBadges">
+            <!-- populated by JS -->
+          </div>
+        </div>
+
+        <!-- RIGHT: Content -->
+        <div class="content-col fade-in" style="transition-delay:0.1s">
+
+          <div class="project-meta-row">
+            <span class="project-cat-badge" id="projCat">Category</span>
+            <span class="project-meta-item">
+              <span class="icon">📅</span>
+              <span id="projDate">—</span>
+            </span>
+            <span class="project-meta-item">
+              <span class="icon">🏢</span>
+              <span id="projClient">—</span>
+            </span>
+          </div>
+
+          <h2 class="project-title-h" id="projTitle">Loading...</h2>
+
+          <a href="#" id="projUrl" target="_blank" rel="noopener" class="project-url">
+            <span>↗</span><span id="projUrlText">projectwebsite.example.com</span>
+          </a>
+
+          <div class="project-overview" id="projOverview">
+            Memuat deskripsi proyek...
+          </div>
+
+          <div class="features-block">
+            <div class="features-label">key_features.json</div>
+            <div class="features-grid" id="featuresGrid">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a href="index.html#projects" class="btn-outline">← Kembali</a>
+            <a href="#" id="viewLink" target="_blank" rel="noopener" class="btn-primary">Lihat Project ↗</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">
+        © <span>Copyright</span>
+        <strong> Faizal Dwi Al Farizi </strong>
+        <span>All Rights Reserved</span>
+      </p>
+      <ul class="footer-socials">
+        <li><a href="" title="Twitter/X">𝕏</a></li>
+        <li><a href="" title="Facebook">f</a></li>
+        <li><a href="" title="Instagram">ig</a></li>
+        <li><a href="" title="LinkedIn">in</a></li>
+      </ul>
+      <p class="footer-credits">
+        Designed by <a href="https://faizaldwia.github.io/faizal-dwi-al-farizi">Faizal Dwi Al Farizi</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TOP -->
+  <a href="#" id="scroll-top" title="Scroll ke atas">↑</a>
+
+  <script>
+    // ═══════════════════════════════════════════
+    // CUSTOM CURSOR
+    // ═══════════════════════════════════════════
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let rx = 0, ry = 0, cx = 0, cy = 0;
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX; cy = e.clientY;
+      cur.style.transform = `translate(${cx - 5}px, ${cy - 5}px)`;
+    });
+    function animRing() {
+      rx += (cx - rx) * 0.12;
+      ry += (cy - ry) * 0.12;
+      ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width  = '56px'; ring.style.height = '56px';
+        ring.style.borderColor = 'rgba(0,212,255,0.8)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width  = '36px'; ring.style.height = '36px';
+        ring.style.borderColor = 'rgba(0,212,255,0.5)';
+      });
+    });
+
+    // ═══════════════════════════════════════════
+    // SCROLL TOP
+    // ═══════════════════════════════════════════
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // ═══════════════════════════════════════════
+    // FADE-IN OBSERVER
+    // ═══════════════════════════════════════════
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // ═══════════════════════════════════════════
+    // LOAD PROJECT DATA
+    // ═══════════════════════════════════════════
+    const params    = new URLSearchParams(window.location.search);
+    const projectId = params.get('id');
+    const project   = typeof projectsData !== 'undefined' ? projectsData[projectId] : null;
+
+    if (!project) {
+      // redirect only if projectsData is loaded; if script missing, show fallback
+      if (typeof projectsData !== 'undefined') location.replace('index.html');
+    } else {
+      // Basic info
+      document.title = `${project.title} — Faizal Dwi Al Farizi`;
+      document.getElementById('pageHeroTitle').textContent = project.title;
+      document.getElementById('breadcrumbTitle').textContent = project.title;
+      document.getElementById('projTitle').textContent      = project.title;
+      document.getElementById('projCat').textContent        = project.category;
+      document.getElementById('projDate').textContent       = project.date;
+      document.getElementById('projClient').textContent     = project.client;
+      document.getElementById('projOverview').textContent   = project.overview;
+
+      // URL
+      const urlEl  = document.getElementById('projUrl');
+      const urlTxt = document.getElementById('projUrlText');
+      urlEl.href      = project.website;
+      urlTxt.textContent = project.website;
+
+      const viewLink = document.getElementById('viewLink');
+      viewLink.href  = project.website;
+
+      // Tech badges
+      const techCont = document.getElementById('techBadges');
+      techCont.innerHTML = project.tech
+        .map(t => `<span class="tech-badge">${t}</span>`)
+        .join('');
+
+      // Features grid
+      const featGrid = document.getElementById('featuresGrid');
+      featGrid.innerHTML = project.features
+        .map(f => `<div class="feature-item">${f}</div>`)
+        .join('');
+
+      // ─── CUSTOM SWIPER ───
+      const images   = project.images;
+      let currentIdx = 0;
+
+      const imgEl  = document.getElementById('swiperImg');
+      const dotsEl = document.getElementById('swiperDots');
+
+      // Build dots
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        images.forEach((_, i) => {
+          const d = document.createElement('button');
+          d.className = 'swiper-dot' + (i === 0 ? ' active' : '');
+          d.addEventListener('click', () => goTo(i));
+          dotsEl.appendChild(d);
+        });
+      }
+
+      function updateDots() {
+        dotsEl.querySelectorAll('.swiper-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === currentIdx);
+        });
+      }
+
+      function goTo(idx) {
+        currentIdx = (idx + images.length) % images.length;
+        imgEl.style.opacity = '0';
+        setTimeout(() => {
+          imgEl.src = images[currentIdx];
+          imgEl.alt = project.title;
+          imgEl.style.opacity = '1';
+          updateDots();
+        }, 180);
+      }
+
+      // Init
+      imgEl.src = images[0];
+      buildDots();
+
+      document.getElementById('swBtnPrev').addEventListener('click', () => goTo(currentIdx - 1));
+      document.getElementById('swBtnNext').addEventListener('click', () => goTo(currentIdx + 1));
+
+      // Auto-advance every 5s
+      setInterval(() => goTo(currentIdx + 1), 5000);
+    }
+  </script>
+</body>
 </html>
