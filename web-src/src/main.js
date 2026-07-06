@@ -238,25 +238,42 @@ document.addEventListener('DOMContentLoaded', async () => {
       link: `project-details.html?id=${p.id}`
     }));
 
-    // Render admin projects by default
-    initProjects(mappedAdminProjects.slice(0, 6));
-
-    // Setup Admin filter bar events
     const adminFilterBar = document.getElementById('adminProjFilterBar');
-    if (adminFilterBar) {
-      const filterBtns = adminFilterBar.querySelectorAll('.filter-btn');
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          const source = this.dataset.source;
-          if (source === 'admin') {
-            initProjects(mappedAdminProjects.slice(0, 6));
-          } else {
-            initProjects(mappedSoftwareProjects.slice(0, 6));
-          }
+    const allProjBtn = document.querySelector('#projects .btn-primary');
+
+    if (adminProjectsList.length === 0) {
+      // If excel data is empty, hide filter bar and default to software projects
+      if (adminFilterBar) {
+        adminFilterBar.style.display = 'none';
+      }
+      initProjects(mappedSoftwareProjects.slice(0, 6));
+      if (allProjBtn) {
+        allProjBtn.setAttribute('href', 'projects.html');
+      }
+    } else {
+      // Render admin projects by default
+      initProjects(mappedAdminProjects.slice(0, 6));
+
+      // Setup Admin filter bar events
+      if (adminFilterBar) {
+        adminFilterBar.style.display = 'flex';
+        const filterBtns = adminFilterBar.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const source = this.dataset.source;
+            if (source === 'admin') {
+              initProjects(mappedAdminProjects.slice(0, 6));
+            } else {
+              initProjects(mappedSoftwareProjects.slice(0, 6));
+            }
+          });
         });
-      });
+      }
+      if (allProjBtn) {
+        allProjBtn.setAttribute('href', 'projects-admin.html');
+      }
     }
   } else {
     initProjects(projectsList.slice(0, 6));
