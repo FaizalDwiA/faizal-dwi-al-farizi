@@ -40,9 +40,10 @@ function formatDriveImageUrl(url) {
 // Initialize all modules when document is fully loaded
 document.addEventListener('DOMContentLoaded', async () => {
   // Set portfolio role based on pathname
-  if (window.location.pathname.includes('admin.html')) {
+  const path = window.location.pathname;
+  if (path.includes('admin.html') || path.endsWith('/admin') || path.endsWith('/admin/')) {
     sessionStorage.setItem('portfolio_role', 'admin');
-  } else if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+  } else if (path.includes('index.html') || path.endsWith('/') || path.endsWith('/index') || path.endsWith('/index/')) {
     sessionStorage.setItem('portfolio_role', 'user');
   }
 
