@@ -18,6 +18,13 @@
   align-items: center;
 }
 
+.hero-text {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden;
+}
+
 /* Terminal window */
 .terminal {
   background: var(--bg2);
@@ -29,10 +36,12 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
@@ -108,16 +117,35 @@
 .blink {
   animation: blink-anim 1.5s step-end infinite;
 }
+
 @keyframes blink-anim {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Terminal custom response text classes */
-.term-success { color: var(--accent2); }
-.term-warn { color: var(--accent4); }
-.term-error { color: var(--accent3); }
-.term-cyan { color: var(--accent); }
+.term-success {
+  color: var(--accent2);
+}
+
+.term-warn {
+  color: var(--accent4);
+}
+
+.term-error {
+  color: var(--accent3);
+}
+
+.term-cyan {
+  color: var(--accent);
+}
 
 .t-comment {
   color: #444c56;
@@ -158,10 +186,12 @@
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -284,10 +314,15 @@ h1.hero-name .highlight {
 /* Hero stats */
 .hero-stats {
   display: flex;
+  flex-direction: column;
   gap: 2.5rem;
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
+}
+
+.hero-stats>div.stat {
+  text-align: center;
 }
 
 .stat-num {
