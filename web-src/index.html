@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faizal Dwi Al Farizi — IT Hardware & Software Specialist</title>
+  <meta name="description" content="Portofolio profesional Faizal Dwi Al Farizi, spesialis dukungan IT Support (troubleshooting, perakitan, servis komputer/laptop) dan Fullstack Web Developer (Laravel, React, CodeIgniter)." />
+  <meta name="keywords" content="Faizal Dwi Al Farizi, IT Support, Fullstack Developer, IT Specialist, troubleshooting komputer, servis laptop, Laravel, React, CodeIgniter, Sukoharjo, Surakarta" />
+
+  <!-- Open Graph Page Specific -->
+  <meta property="og:title" content="Faizal Dwi Al Farizi — IT Hardware & Software Specialist" />
+  <meta property="og:description" content="Dukungan teknis IT profesional (troubleshooting hardware, jaringan, server, audit sistem) dan pembuatan website enterprise responsif." />
+
+  <!-- Twitter Page Specific -->
+  <meta property="twitter:title" content="Faizal Dwi Al Farizi — IT Hardware & Software Specialist" />
+  <meta property="twitter:description" content="Dukungan teknis IT profesional dan Fullstack Web Development. Solusi terpadu hardware & software." />
+
+  <!-- Common Meta, Fonts, PWA, SW & Favicons -->
+  <load src="src/partials/head-common.html" />
+
+  <!-- Entry Script -->
+  <script type="module" src="/src/main.js"></script>
+</head>
+
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo"><span>&lt;</span>FDA_F174<span>/&gt;</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">home</a></li>
+      <li><a href="#about">tentang</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">riwayat</a></li>
+      <li><a href="#services">layanan</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#sertifikat">sertifikat</a></li>
+      <li><a href="#contact">kontak</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text fade-in">
+        <!-- SYSTEM HUD PANEL -->
+        <div class="status-panel"
+          style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; border:1px solid var(--border); padding:0.6rem 0.8rem; border-radius:6px; background:rgba(6,9,14,0.7); margin-bottom:1.5rem; display:flex; gap:1.2rem; flex-wrap:wrap; border-left: 3px solid var(--accent); position:relative; z-index:5;">
+          <div><span style="color:var(--text-muted)">SYSTEM:</span> <span class="blink"
+              style="color:var(--accent2); font-weight:700;">● ONLINE</span></div>
+          <div><span style="color:var(--text-muted)">NETSEC:</span> <span
+              style="color:var(--accent); font-weight:500;">✓ SECURE</span></div>
+          <div><span style="color:var(--text-muted)">LOCAL_IP:</span> <span
+              style="color:var(--accent)">192.168.1.174</span></div>
+          <div><span style="color:var(--text-muted)">SOLVED:</span> <span style="color:var(--accent2)">100%</span></div>
+        </div>
+
+        <div class="hero-badge">IT Hardware & Software Specialist</div>
+        <h1 class="hero-name">Faizal Dwi<br><span class="highlight">Al Farizi</span></h1>
+        <div class="hero-role">run service --mode=unified</div>
+        <p class="hero-desc">
+          Saya menyediakan layanan pembuatan website/software (Fullstack Developer) serta dukungan teknis IT, perakitan,
+          troubleshooting hardware komputer, jaringan, dan audit sistem (IT Support). Setiap masalah teknis dijamin
+          selesai tuntas.
+        </p>
+        <div class="hero-ctas">
+          <a href="#services" class="btn-primary">▶ Lihat Layanan</a>
+          <a href="#projects" class="btn-outline">📁 Proyek Web</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num" id="statProj">0</div>
+            <div class="stat-lbl">WEB PROJECTS</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">50+</div>
+            <div class="stat-lbl">DEVICES HANDLED</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="statSert">0</div>
+            <div class="stat-lbl">SERTIFIKAT</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMINAL -->
+      <div class="terminal fade-in" style="transition-delay:0.2s; width: 95%">
+        <div class="terminal-bar">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+          <div class="terminal-title">faizal@portfolio ~ profile.json</div>
+          <button class="terminal-diag-btn" id="runDiagBtn"><i class="bi bi-cpu"></i> RUN DIAGNOSTICS</button>
+        </div>
+        <div class="terminal-body" id="termBody">
+          <div id="termContent">
+            <div class="t-comment">// Faizal Dwi Al Farizi — Unified IT Profile</div>
+            <div>{</div>
+            <div class="t-indent"><span class="t-key">"name"</span>: <span class="t-str">"Faizal Dwi Al Farizi"</span>,
+            </div>
+            <div class="t-indent"><span class="t-key">"roles"</span>: [<span class="t-str">"Fullstack Developer"</span>,
+              <span class="t-str">"IT Support"</span>],
+            </div>
+            <div class="t-indent"><span class="t-key">"location"</span>: <span class="t-str">"Sukoharjo,
+                Indonesia"</span>,</div>
+            <div class="t-indent"><span class="t-key">"skills"</span>: {</div>
+            <div class="t-indent" style="padding-left:3rem">
+              <span class="t-key">"software"</span>: [<span class="t-str">"Laravel"</span>, <span
+                class="t-str">"React"</span>, <span class="t-str">"CI"</span>, <span class="t-str">"Python"</span>,
+              <span class="t-str">"MySQL"</span>],<br>
+              <span class="t-key">"hardware"</span>: [<span class="t-str">"Repair"</span>, <span class="t-str">"OS
+                Install"</span>, <span class="t-str">"Network"</span>, <span class="t-str">"IT Audit"</span>]
+            </div>
+            <div class="t-indent">},</div>
+            <div class="t-indent"><span class="t-key">"experience"</span>: <span class="t-str">"5+ years"</span>,</div>
+            <div class="t-indent"><span class="t-key">"available"</span>: <span class="t-val">true</span></div>
+            <div>}<span class="t-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">01 — tentang</div>
+      <h2 class="section-title">Siapa Saya?</h2>
+      <p class="section-desc">Spesialis IT Rekayasa Perangkat Lunak dan Dukungan Sistem hardware & software.</p>
+
+      <div class="about-grid">
+        <!-- PROFILE PHOTO -->
+        <div class="about-photo-container fade-in">
+          <div class="about-photo-frame">
+            <!-- HUD Elements -->
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-glow"></div>
+
+            <img src="assets/img/profile/profile.webp" alt="Faizal Dwi Al Farizi" class="about-photo" />
+
+            <!-- Scanline overlay -->
+            <div class="scanline"></div>
+
+            <!-- Available Status Tag -->
+            <div class="status-tag">
+              <span class="status-pulse"></span>
+              <span>AVAILABLE FOR HIRE</span>
+            </div>
+          </div>
+
+          <div class="photo-info-footer">
+            <div class="photo-info-item">
+              <span class="lbl">ROLE:</span>
+              <span class="val text-cyan">IT HARDWARE/SOFT</span>
+            </div>
+            <div class="photo-info-item">
+              <span class="lbl">EXP:</span>
+              <span class="val text-green">5+ YEARS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-intro fade-in" style="transition-delay:0.1s">
+          <p>Halo! Saya <strong style="color:#fff">Faizal Dwi Al Farizi</strong>, seorang spesialis IT Rekayasa
+            Perangkat Lunak dan Dukungan Sistem berbasis di Sukoharjo, Indonesia. Saya memulai perjalanan di dunia IT
+            sejak 2019 melalui pendidikan Teknik Komputer & Jaringan (SMK TKJ) dan Teknik Rekayasa Perangkat Lunak (D4
+            RPL). Saya berpengalaman melakukan perbaikan perangkat keras, audit operasional sistem IT di CV. Rosin,
+            hingga membangun berbagai sistem absensi modern dan aplikasi web enterprise.</p>
+          <div class="about-quote">"Unified IT Hardware & Software Solutions — ada kendala pasti beres dan selesai
+            tuntas."</div>
+          <p>Bagi saya, baik keandalan infrastruktur fisik maupun kualitas kode aplikasi adalah prioritas utama. Setiap
+            kebutuhan teknis dan audit sistem yang Anda percayakan dijamin selesai sepenuhnya.</p>
+          <div class="hero-ctas" style="margin-top:1.8rem">
+            <a href="#experience" class="btn-outline">Lihat Riwayat Kerja →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-cards fade-in" style="transition-delay:0.2s">
+        <div class="about-card">
+          <div class="about-card-icon">🖥️</div>
+          <h3>Fullstack Web Dev</h3>
+          <p>Pembuatan website & aplikasi web responsif menggunakan React, Laravel, CodeIgniter, Python, dan database
+            relasional.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🔧</div>
+          <h3>IT Hardware & Repair</h3>
+          <p>Servis & perakitan PC/Laptop sesuai kebutuhan, pemeliharaan fisik komponen, penggantian sparepart, dan
+            troubleshoot kerusakan.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">💾</div>
+          <h3>OS & System Config</h3>
+          <p>Instalasi Windows/Linux, setup driver, konfigurasi BIOS/partisi, serta backup data rutin dan manajemen
+            server lokal.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🛡️</div>
+          <h3>IT Compliance & Audit</h3>
+          <p>Audit operasional IT, monitoring kestabilan sistem, remote desktop helpdesk (AnyDesk/TeamViewer), dan
+            pelatihan pengguna.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label">02 — keahlian</div>
+      <h2 class="section-title">Tech Stack & Support Skills</h2>
+      <p class="section-desc">Kombinasi keahlian pemrograman perangkat lunak dan dukungan teknis sistem hardware.</p>
+
+      <div class="skills-grid-wrapper" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+
+        <!-- SOFTWARE DEV STACK -->
+        <div class="skill-card fade-in">
+          <div class="skill-card-header">
+            <span class="icon">🖥️</span>
+            <h3>Software & Web Development</h3>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">PHP / Laravel / CodeIgniter</span><span
+                class="skill-pct">85%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">JavaScript / React / HTML5 / CSS3</span><span
+                class="skill-pct">90%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">Python (Scripting & Automation)</span><span
+                class="skill-pct">82%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="82"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">Database (MySQL / PostgreSQL)</span><span
+                class="skill-pct">80%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="80"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">Git & GitHub Version Control</span><span
+                class="skill-pct">80%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IT SUPPORT & HARDWARE STACK -->
+        <div class="skill-card fade-in" style="transition-delay:0.1s">
+          <div class="skill-card-header">
+            <span class="icon">🔧</span>
+            <h3>IT Support & Hardware Systems</h3>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">Hardware Troubleshooting & Repair</span><span
+                class="skill-pct">88%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="88"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">OS Installation (Windows/Linux) & BIOS</span><span
+                class="skill-pct">90%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">System Security (Antivirus & Malware Cleanup)</span><span
+                class="skill-pct">85%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">IT Auditing, Monitoring & Helpdesk</span><span
+                class="skill-pct">82%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="82"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-info"><span class="skill-name">Basic Networking (LAN, Wi-Fi Setup)</span><span
+                class="skill-pct">75%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-pct="75"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-label">04 — layanan</div>
+      <h2 class="section-title">IT Services & Solutions</h2>
+      <p class="section-desc">Layanan profesional terpadu yang saya sediakan untuk menunjang operasional digital bisnis
+        Anda.</p>
+
+      <div class="proj-grid" style="margin-top: 3rem;">
+        <div class="proj-card fade-in">
+          <div class="proj-type" style="color:var(--accent2)">IT SOFTWARE</div>
+          <div class="proj-icon-row">
+            <i class="bi bi-code-slash"
+              style="font-size:1.5rem;color:var(--accent);margin-bottom:0.6rem;display:block"></i>
+          </div>
+          <div class="proj-name">Web & App Development</div>
+          <div class="proj-desc">Pembuatan sistem absensi, profil web bisnis, aplikasi e-kinerja, automation script,
+            integrasi API, dan sistem dashboard kustom.</div>
+        </div>
+        <div class="proj-card fade-in" style="transition-delay:80ms">
+          <div class="proj-type" style="color:var(--accent)">IT HARDWARE</div>
+          <div class="proj-icon-row">
+            <i class="bi bi-tools" style="font-size:1.5rem;color:var(--accent2);margin-bottom:0.6rem;display:block"></i>
+          </div>
+          <div class="proj-name">Servis & Perakitan Komputer</div>
+          <div class="proj-desc">Troubleshooting komponen PC/Laptop, penggantian sparepart (RAM, SSD, dll), pembersihan
+            fisik debu/pasta, dan perakitan PC sesuai budget.</div>
+        </div>
+        <div class="proj-card fade-in" style="transition-delay:160ms">
+          <div class="proj-type" style="color:var(--accent)">IT SOFTWARE</div>
+          <div class="proj-icon-row">
+            <i class="bi bi-window" style="font-size:1.5rem;color:var(--accent);margin-bottom:0.6rem;display:block"></i>
+          </div>
+          <div class="proj-name">Instalasi & Troubleshooting OS</div>
+          <div class="proj-desc">Instalasi Windows 10/11 atau Linux original, konfigurasi driver perangkat keras,
+            partisi disk, dan pemasangan software produktivitas kerja.</div>
+        </div>
+        <div class="proj-card fade-in" style="transition-delay:0ms">
+          <div class="proj-type" style="color:var(--accent2)">IT SYSTEMS</div>
+          <div class="proj-icon-row">
+            <i class="bi bi-server"
+              style="font-size:1.5rem;color:var(--accent2);margin-bottom:0.6rem;display:block"></i>
+          </div>
+          <div class="proj-name">Backup Data & Maintenance Server</div>
+          <div class="proj-desc">Setup skema backup data teratur untuk proteksi kehilangan, pemeriksaan rutin kesehatan
+            server (health check), restart aman, dan setup jaringan lokal.</div>
+        </div>
+        <div class="proj-card fade-in" style="transition-delay:80ms">
+          <div class="proj-type" style="color:var(--accent)">IT SUPPORT</div>
+          <div class="proj-icon-row">
+            <i class="bi bi-display"
+              style="font-size:1.5rem;color:var(--accent);margin-bottom:0.6rem;display:block"></i>
+          </div>
+          <div class="proj-name">Remote Support & Helpdesk</div>
+          <div class="proj-desc">Pemecahan masalah error software secara cepat dan instan dari jarak jauh menggunakan
+            AnyDesk, TeamViewer, atau RustDesk secara aman.</div>
+        </div>
+        <div class="proj-card fade-in" style="transition-delay:160ms">
+          <div class="proj-type" style="color:var(--accent2)">IT COMPLIANCE</div>
+          <div class="proj-icon-row">
+            <i class="bi bi-shield-check"
+              style="font-size:1.5rem;color:var(--accent2);margin-bottom:0.6rem;display:block"></i>
+          </div>
+          <div class="proj-name">IT Auditing & Pengawasan</div>
+          <div class="proj-desc">Audit kepatuhan sistem operasional IT, analisis risiko keamanan, monitoring server,
+            pelatihan SOP hardware/software bagi karyawan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-label">03 — riwayat</div>
+      <h2 class="section-title">Perjalanan Karier & Pendidikan</h2>
+
+      <div class="exp-grid">
+        <!-- Experience timeline -->
+        <div>
+          <h3
+            style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:2rem;">
+            $ cat experience.log</h3>
+          <div class="timeline">
+
+            <div class="tl-item fade-in">
+              <div class="tl-period">DES 2025 — FEB 2026</div>
+              <div class="tl-role">Programmer (IT Auditor / MK)</div>
+              <div class="tl-company">CV. Rosin</div>
+              <div class="tl-desc">
+                <ul class="tl-list">
+                  <li>Mendukung operasional TI pada 2 unit bisnis melalui monitoring sistem, pemeliharaan, dan dukungan
+                    teknis kepada pengguna.</li>
+                  <li>Melakukan audit sistem informasi serta menyusun lebih dari 10 rekomendasi perbaikan untuk
+                    meningkatkan keandalan sistem dan kualitas layanan.</li>
+                  <li>Menangani troubleshooting hardware dan software, termasuk analisis masalah serta penyelesaian
+                    kendala pengguna (end-user support).</li>
+                  <li>Berpartisipasi dalam pengembangan website tenant serta memberikan pelatihan dan dukungan
+                    penggunaan sistem kepada end-user.</li>
+                </ul>
+              </div>
+              <div class="tl-tags">
+                <span class="tl-tag">IT Auditing</span>
+                <span class="tl-tag">System Monitoring</span>
+                <span class="tl-tag">Web Development</span>
+                <span class="tl-tag">User Training</span>
+                <span class="tl-tag">Management Control</span>
+                <span class="tl-tag">Risk Assessment</span>
+              </div>
+            </div>
+
+            <div class="tl-item fade-in" style="transition-delay:0.1s">
+              <div class="tl-period">NOV 2024 — JUN 2025</div>
+              <div class="tl-role">Fullstack Developer</div>
+              <div class="tl-company">CV. Rosin</div>
+              <div class="tl-desc">
+                <ul class="tl-list">
+                  <li>Membangun sistem manajemen SDM menggunakan CodeIgniter dengan 4 modul utama: kehadiran, cuti,
+                    perizinan, dan tabulasi data.</li>
+                  <li>Mengembangkan modul kehadiran yang mencakup pencatatan absensi, riwayat kehadiran, dan monitoring
+                    keterlambatan karyawan.</li>
+                  <li>Mengembangkan modul cuti untuk pengajuan, persetujuan, dan pelacakan status cuti karyawan.</li>
+                  <li>Mengembangkan modul perizinan untuk pengelolaan izin kerja serta proses persetujuan secara
+                    digital.</li>
+                  <li>Mengembangkan modul tabulasi data untuk rekapitulasi dan pelaporan data kehadiran, cuti, dan
+                    perizinan.</li>
+                </ul>
+              </div>
+              <div class="tl-tags">
+                <span class="tl-tag">Node.js</span>
+                <span class="tl-tag">CodeIgniter 3</span>
+                <span class="tl-tag">MySQL</span>
+                <span class="tl-tag">Face Detection</span>
+              </div>
+            </div>
+
+            <div class="tl-item fade-in" style="transition-delay:0.2s">
+              <div class="tl-period">AGU 2023 — DES 2023</div>
+              <div class="tl-role">Wirausaha Merdeka (MBKM)</div>
+              <div class="tl-company">Universitas Muhammadiyah Surakarta</div>
+              <div class="tl-desc">Program kewirausahaan Kemdikbud. Membangun & mengelola usaha Parfum Afarma Aromatics
+                — dari bisnis plan hingga pemasaran digital.</div>
+              <div class="tl-tags">
+                <span class="tl-tag">Digital Marketing</span>
+                <span class="tl-tag">Business Plan</span>
+              </div>
+            </div>
+
+            <div class="tl-item fade-in" style="transition-delay:0.3s">
+              <div class="tl-period">AGU 2022 — OKT 2022</div>
+              <div class="tl-role">Junior Programmer</div>
+              <div class="tl-company">CV. Expressa</div>
+              <div class="tl-desc">
+                <ul class="tl-list">
+                  <li>Mengembangkan dan memelihara 5+ fitur aplikasi web menggunakan PHP, JavaScript, CodeIgniter, dan
+                    AdminLTE untuk mendukung kebutuhan operasional perusahaan.</li>
+                  <li>Mengelola basis data PostgreSQL, termasuk pengolahan data, optimasi query, dan pemeliharaan data
+                    yang mendukung operasional aplikasi harian.</li>
+                  <li>Menggunakan FileZilla untuk pengelolaan file aplikasi, deployment, dan pemeliharaan source code
+                    pada server.</li>
+                  <li>Berkolaborasi dalam tim pengembang untuk implementasi, pengujian, troubleshooting, dan
+                    pemeliharaan sistem guna memastikan aplikasi berjalan dengan optimal.</li>
+                </ul>
+              </div>
+              <div class="tl-tags">
+                <span class="tl-tag">PHP</span>
+                <span class="tl-tag">CodeIgniter</span>
+                <span class="tl-tag">PostgreSQL</span>
+                <span class="tl-tag">Bootstrap</span>
+              </div>
+            </div>
+
+            <div class="tl-item fade-in" style="transition-delay:0.4s">
+              <div class="tl-period">NOV 2021 — DES 2021</div>
+              <div class="tl-role">Teknisi Magang</div>
+              <div class="tl-company">Internasional Computer</div>
+              <div class="tl-desc">
+                <ul class="tl-list">
+                  <li>Melakukan perbaikan hardware dan software komputer pelanggan, termasuk penggantian SSD/HDD,
+                    instalasi ulang sistem operasi, dan instalasi aplikasi pendukung.</li>
+                  <li>Menangani troubleshooting komputer secara cepat untuk mengidentifikasi dan menyelesaikan masalah
+                    perangkat keras maupun perangkat lunak.</li>
+                  <li>Melakukan instalasi, konfigurasi, dan pemeliharaan sistem komputer guna memastikan perangkat dapat
+                    digunakan secara optimal oleh pengguna.</li>
+                </ul>
+              </div>
+              <div class="tl-tags">
+                <span class="tl-tag">Hardware Service</span>
+                <span class="tl-tag">IT Support</span>
+                <span class="tl-tag">Customer Service</span>
+              </div>
+            </div>
+
+            <div class="tl-item fade-in" style="transition-delay:0.5s">
+              <div class="tl-period">NOV 2019 — JAN 2020</div>
+              <div class="tl-role">Asisten Teknisi</div>
+              <div class="tl-company">Lubna Computer</div>
+              <div class="tl-desc">
+                <ul class="tl-list">
+                  <li>Mendukung teknisi senior dalam instalasi, perakitan, dan perbaikan puluhan perangkat komputer dan
+                    laptop pelanggan.</li>
+                  <li>Melakukan troubleshooting hardware dan software untuk membantu identifikasi dan penyelesaian
+                    masalah teknis pelanggan.</li>
+                  <li>Membantu operasional toko serta pelayanan pelanggan dalam proses konsultasi, perbaikan, dan
+                    pengecekan perangkat.</li>
+                  <li>Berkontribusi dalam menjaga kualitas layanan dan kepuasan pelanggan melalui dukungan teknis dan
+                    operasional harian.</li>
+                </ul>
+              </div>
+              <div class="tl-tags">
+                <span class="tl-tag">Hardware</span>
+                <span class="tl-tag">Customer Service</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <h3
+            style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent2);letter-spacing:0.1em;margin-bottom:2rem;">
+            $ cat education.log</h3>
+
+          <div class="edu-item fade-in">
+            <div class="edu-period">2021 — 2025</div>
+            <div class="edu-degree">D4 Teknik Rekayasa Perangkat Lunak</div>
+            <div class="edu-school">Politeknik Indonusa Surakarta</div>
+            <div class="edu-desc">
+              <ul class="edu-list">
+                <li>Lulus dengan predikat Cumlaude (IPK 3,84/4,00).</li>
+                <li>Mengikuti Program Wirausaha Merdeka (MBKM) 2024 dengan berkontribusi pada pengembangan produk,
+                  penyusunan model bisnis, dan perolehan Hak Kekayaan Intelektual (HKI).</li>
+                <li>Aktif mengikuti webinar dan seminar untuk meningkatkan wawasan serta kompetensi di bidang teknologi
+                  informasi.</li>
+                <li>Mengembangkan aplikasi web dan mobile yang digunakan untuk mendukung kebutuhan pengguna di
+                  lingkungan akademik maupun masyarakat.</li>
+                <li>Menerapkan keterampilan pengembangan perangkat lunak melalui pengalaman magang di CV Expressa dan CV
+                  Rosin.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="edu-item fade-in" style="transition-delay:0.1s">
+            <div class="edu-period">2018 — 2021</div>
+            <div class="edu-degree">SMK Teknik Komputer & Jaringan</div>
+            <div class="edu-school">Al Islam Surakarta</div>
+            <div class="edu-desc">
+              <ul class="edu-list">
+                <li>Mempelajari dasar-dasar pemrograman dan logika algoritma.</li>
+                <li>Mempelajari perakitan komputer, instalasi sistem operasi, troubleshooting hardware dan software,
+                  serta dasar jaringan komputer.</li>
+                <li>Aktif dalam kegiatan OSIS dan Pramuka untuk mengembangkan kepemimpinan, komunikasi, disiplin, dan
+                  kerja sama tim.</li>
+                <li>Mengembangkan kompetensi akademik, karakter, dan etika melalui pembelajaran umum dan keagamaan.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="edu-item fade-in" style="transition-delay:0.2s">
+            <div class="edu-period">2015 — 2018</div>
+            <div class="edu-degree">Sekolah Menengah Pertama</div>
+            <div class="edu-school">Al Muayyad Surakarta</div>
+            <div class="edu-desc">
+              <ul class="edu-list">
+                <li>Belajar mengaji.</li>
+                <li>Belajar agama.</li>
+                <li>Belajar adab dan ilmu.</li>
+                <li>Belajar mandiri dan bermasyarakat.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Cert badges -->
+          <div style="margin-top:2.5rem" class="fade-in" style="transition-delay:0.3s">
+            <h3
+              style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent4);letter-spacing:0.1em;margin-bottom:1.2rem;">
+              $ ls certificates/</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">MAGANG</span>
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">WMK</span>
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">FreeCodeCamp</span>
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">SoloLearn</span>
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">Eksternal</span>
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">Indonusa</span>
+              <span class="tl-tag" style="border-color:rgba(255,215,0,0.25);color:var(--accent4)">SMK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label">05 — projects</div>
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-desc">Beberapa proyek yang pernah saya kerjakan — dari sistem enterprise hingga tools pribadi.
+      </p>
+
+      <div class="proj-grid" id="proj-grid-container"></div>
+
+      <div style="text-align: center; margin-top: 3.5rem;" class="fade-in">
+        <a href="projects.html" class="btn-primary"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.8rem 2rem;">
+          ⚡ Lihat Semua Projects →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERTIFIKAT -->
+  <section id="sertifikat" style="background:var(--bg2)">
+    <div class="section-inner">
+      <div class="section-label">06 — sertifikat</div>
+      <h2 class="section-title">Sertifikat & Pencapaian</h2>
+      <p class="section-desc">Kumpulan sertifikat dari berbagai program, pelatihan, dan pencapaian akademik.</p>
+
+      <div class="sert-grid" id="sert-grid-container"></div>
+
+      <div style="text-align: center; margin-top: 3.5rem;" class="fade-in">
+        <a href="certificates.html" class="btn-primary"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.8rem 2rem;">
+          ⚡ Lihat Semua Sertifikat →
+        </a>
+      </div>
+
+      <!-- Lightbox overlay -->
+      <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-nav prev" id="lightboxPrev">‹</button>
+        <button class="lightbox-nav next" id="lightboxNext">›</button>
+        <div class="lightbox-inner">
+          <img src="" alt="" id="lightboxImg" />
+          <div class="lightbox-info">
+            <div class="lightbox-meta" id="lightboxMeta"></div>
+            <div class="lightbox-title" id="lightboxTitle"></div>
+            <div class="lightbox-desc" id="lightboxDesc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">07 — kontak</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-desc">Tertarik kolaborasi atau punya project menarik? Jangan ragu untuk menghubungi saya.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+
+          <!-- LOKASI → buka Google Maps -->
+          <a href="https://maps.app.goo.gl/8f5afbS3S7PPqSMdA" target="_blank" rel="noopener"
+            class="contact-item contact-item-link">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">LOKASI <span class="contact-link-hint">↗ Buka Maps</span></div>
+              <div class="contact-value">Jl. Slamet, Talang, Banaran 01/02<br>Grogol, Sukoharjo</div>
+            </div>
+          </a>
+
+          <!-- TELEPON/WA → langsung ke WA modal -->
+          <a href="#" class="contact-item contact-item-link" id="waContactTrigger">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-label">WHATSAPP <span class="contact-link-hint">↗ Chat WA</span></div>
+              <div class="contact-value">+62 895-3781-20630</div>
+            </div>
+          </a>
+
+          <!-- EMAIL → buka Gmail compose -->
+          <a href="mailto:faizaldwialfarizi@gmail.com" class="contact-item contact-item-link" target="_blank"
+            rel="noopener">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">EMAIL <span class="contact-link-hint">↗ Kirim Email</span></div>
+              <div class="contact-value">faizaldwialfarizi@gmail.com</div>
+            </div>
+          </a>
+
+          <div class="social-row">
+            <a href="https://github.com/FaizalDwiA" target="_blank" class="social-btn" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/faizal-dwi-al-farizi-f174/" target="_blank" class="social-btn"
+              title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a href="https://web.facebook.com/faizaldwialfarizi.faizaldwialfarizi" target="_blank" class="social-btn"
+              title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="https://youtube.com/@faizaldwialfarizi" target="_blank" class="social-btn" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="map-wrap fade-in" style="transition-delay:0.15s">
+          <!-- Klik iframe → buka maps di tab baru -->
+          <a href="https://maps.app.goo.gl/8f5afbS3S7PPqSMdA" target="_blank" rel="noopener" class="map-link-overlay"
+            title="Buka di Google Maps">
+            <span>↗ Buka di Google Maps</span>
+          </a>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.18873531569812!2d110.7982997008346!3d-7.572823537930321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a15005013e483%3A0xffedd07b4cbc5209!2sTakoyaki%20Nyah%20Nur%20%26%20Pempek%20King%20Jum!5e0!3m2!1sid!2sid!4v1755931710783!5m2!1sid!2sid"
+            frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <span>Faizal Dwi Al Farizi</span> — Built with ☕ &amp; 💙 &nbsp;|&nbsp; All Rights Reserved</p>
+  </footer>
+
+  <!-- WhatsApp Contact Modal -->
+  <div class="wa-modal-overlay" id="waModalOverlay">
+    <div class="wa-modal">
+      <div class="wa-modal-header">
+        <h3><i class="bi bi-whatsapp"></i> Chat WhatsApp</h3>
+        <button class="wa-modal-close" id="waModalClose">✕</button>
+      </div>
+      <div class="wa-modal-body">
+        <div class="wa-input-group">
+          <label for="waName">Nama Anda <span style="color:var(--accent3)">*</span></label>
+          <input type="text" id="waName" placeholder="Masukkan nama..." autocomplete="off">
+        </div>
+        <div class="wa-input-group">
+          <label for="waDari">Instansi / Perusahaan (Opsional)</label>
+          <input type="text" id="waDari" placeholder="Nama instansi..." autocomplete="off">
+        </div>
+        <div class="wa-input-group">
+          <label for="waKeperluan">Keperluan <span style="color:var(--accent3)">*</span></label>
+          <select id="waKeperluan">
+            <option value="">-- Pilih Keperluan --</option>
+            <option value="Pembuatan Web / Software">Pembuatan Web / Software</option>
+            <option value="Servis Hardware PC / Laptop">Servis Hardware PC / Laptop</option>
+            <option value="Instalasi & Troubleshooting Software">Instalasi & Troubleshooting Software</option>
+            <option value="Setup Jaringan / LAN / Wi-Fi">Setup Jaringan / LAN / Wi-Fi</option>
+            <option value="IT Auditing / Konsultasi Sistem">IT Auditing / Konsultasi Sistem</option>
+            <option value="Kerjasama Pekerjaan / Lainnya">Kerjasama Pekerjaan / Lainnya</option>
+          </select>
+        </div>
+        <div class="wa-input-group">
+          <label for="waPesan">Pesan Tambahan (Opsional)</label>
+          <textarea id="waPesan" rows="3" placeholder="Tulis deskripsi kendala / pesan tambahan..."></textarea>
+        </div>
+      </div>
+      <div class="wa-modal-footer">
+        <button class="wa-btn-send" id="waSendBtn">
+          Kirim via WhatsApp <i class="bi bi-send-fill" style="margin-left:0.3rem"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

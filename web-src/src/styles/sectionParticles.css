@@ -1,0 +1,97 @@
+/* ── SECTION PARTICLE CONTAINERS ── */
+.section-particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0; /* Keep behind section contents but inside the section relative box */
+}
+
+/* Ensure parent sections are positioned relatively for container bonding */
+#hero,
+#about,
+#skills,
+#experience,
+#projects,
+#sertifikat,
+#contact {
+  position: relative;
+}
+
+/* Ensure inner section content stays on top of the particles */
+.hero-inner,
+.section-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── INDIVIDUAL SECTION PARTICLES ── */
+.section-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* Emojis look better with drop-shadow filter rather than text-shadow */
+.section-particle.is-emoji {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+
+/* Trophy Emojis golden glow */
+.section-particle.emoji-trophy {
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+}
+
+/* Communication Emojis cyan glow */
+.section-particle.emoji-comm {
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
+}
+
+/* COLOR VARIANTS FOR TEXT PARTICLES */
+.section-particle.color-cyan {
+  color: rgba(0, 212, 255, 0.45);
+  text-shadow: 0 0 6px rgba(0, 212, 255, 0.3);
+}
+
+.section-particle.color-green {
+  color: rgba(126, 231, 135, 0.45);
+  text-shadow: 0 0 6px rgba(126, 231, 135, 0.3);
+}
+
+.section-particle.color-yellow {
+  color: rgba(255, 215, 0, 0.45);
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+.section-particle.color-pink {
+  color: rgba(255, 107, 107, 0.45);
+  text-shadow: 0 0 6px rgba(255, 107, 107, 0.3);
+}
+
+.section-particle.color-dim {
+  color: rgba(118, 131, 144, 0.25);
+  text-shadow: none;
+}
+
+/* Adjust size variations */
+.section-particle.size-sm {
+  font-size: 11px;
+}
+.section-particle.size-md {
+  font-size: 14px;
+}
+.section-particle.size-lg {
+  font-size: 18px;
+}

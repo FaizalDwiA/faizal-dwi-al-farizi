@@ -1,0 +1,176 @@
+/* ── CUSTOM HARDWARE CURSOR (Futuristic Developer theme) ── */
+body {
+  cursor: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Cpath d='M2 2l20 8-10 2-2 10-8-20z' fill='%23080c10' stroke='%2300d4ff' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M5 5l11 4-5.5 1-1 5.5-3.5-10.5z' fill='%2300d4ff'/%3E%3C/svg%3E") 2 2, auto;
+}
+
+/* Glowing Neon Green Pointer for Interactive Elements */
+a, button, [role="button"], 
+input[type="submit"], input[type="button"], select,
+.sert-card, .filter-btn, .social-btn, .contact-item-link, .about-card,
+.swiper-btn, .swiper-dot, .tech-badge {
+  cursor: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Cpath d='M2 2l20 8-10 2-2 10-8-20z' fill='%23080c10' stroke='%237ee787' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M5 5l11 4-5.5 1-1 5.5-3.5-10.5z' fill='%237ee787'/%3E%3C/svg%3E") 2 2, pointer !important;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.05s linear, opacity 0.2s ease;
+  box-shadow: var(--glow);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.1s ease, width 0.2s, height 0.2s, border-color 0.2s, opacity 0.2s ease;
+}
+
+.cursor.disintegrated,
+.cursor-ring.disintegrated {
+  transform: scale(0) !important;
+  opacity: 0 !important;
+}
+
+body:hover .cursor {
+  opacity: 1;
+}
+
+/* ── CODE SNAKE SEGMENTS ── */
+.cursor-segment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9997;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent);
+  opacity: 0.75;
+  text-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
+  transition: color 0.25s ease, text-shadow 0.25s ease, opacity 0.25s ease;
+  will-change: transform;
+  user-select: none;
+}
+
+/* Hover effect on interactive elements */
+.cursor-segment.hovered {
+  color: var(--accent2);
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(126, 231, 135, 0.8), 0 0 15px rgba(126, 231, 135, 0.4);
+}
+
+/* ── FLOATING TRAIL WORDS ── */
+.cursor-trail-word {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9996;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: rgba(0, 212, 255, 0.55);
+  text-shadow: 0 0 4px rgba(0, 212, 255, 0.3);
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+/* ── CLICK CODE SNIPPET BURSTS ── */
+.cursor-click-snippet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 800;
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+.cursor-click-snippet.color-cyan {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.8), 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.cursor-click-snippet.color-green {
+  color: var(--accent2);
+  text-shadow: 0 0 8px rgba(126, 231, 135, 0.8), 0 0 15px rgba(126, 231, 135, 0.4);
+}
+
+.cursor-click-snippet.color-yellow {
+  color: var(--accent4);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.cursor-glitch-particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 800;
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+.cursor-glitch-particle.color-cyan {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.8), 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.cursor-glitch-particle.color-green {
+  color: var(--accent2);
+  text-shadow: 0 0 8px rgba(126, 231, 135, 0.8), 0 0 15px rgba(126, 231, 135, 0.4);
+}
+
+.cursor-glitch-particle.color-yellow {
+  color: var(--accent4);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.cursor-glitch-particle.color-pink {
+  color: #ff007f;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.8), 0 0 15px rgba(255, 0, 127, 0.4);
+}
+
+/* Hide custom cursor elements on mobile/tablet touch screens and small screens */
+@media (pointer: coarse), (max-width: 1024px) {
+  .cursor,
+  .cursor-ring,
+  .cursor-segment,
+  .cursor-particle,
+  .cursor-glitch-particle,
+  #cursorTrailContainer {
+    display: none !important;
+  }
+  body {
+    cursor: auto !important;
+  }
+  a, button, [role="button"], 
+  input[type="submit"], input[type="button"], select,
+  .sert-card, .filter-btn, .social-btn, .contact-item-link, .about-card,
+  .swiper-btn, .swiper-dot, .tech-badge {
+    cursor: pointer !important;
+  }
+}
+
+

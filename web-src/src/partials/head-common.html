@@ -1,0 +1,38 @@
+<!-- Author & Robots -->
+<meta name="author" content="Faizal Dwi Al Farizi" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#080c10" />
+
+<!-- Open Graph Shared -->
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/img/icon.webp" />
+
+<!-- Twitter Shared -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="assets/img/icon.webp" />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="FDA Portfolio" />
+<link rel="apple-touch-icon" href="assets/img/icon.webp" />
+<link href="assets/img/icon.webp" rel="icon" />
+
+<!-- Fonts & Connections -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap"
+  rel="stylesheet" />
+
+<!-- Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+        .catch(err => console.log('Service Worker registration failed:', err));
+    });
+  }
+</script>
