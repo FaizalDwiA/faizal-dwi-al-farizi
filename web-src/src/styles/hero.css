@@ -314,7 +314,6 @@ h1.hero-name .highlight {
 /* Hero stats */
 .hero-stats {
   display: flex;
-  flex-direction: column;
   gap: 2.5rem;
   margin-top: 3rem;
   padding-top: 2rem;
@@ -384,5 +383,9 @@ h1.hero-name .highlight {
 
   .t-indent {
     padding-left: 1rem;
+  }
+
+  .hero-stats {
+    flex-direction: column;
   }
 }
