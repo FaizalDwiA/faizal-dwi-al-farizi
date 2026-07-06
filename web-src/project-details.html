@@ -1716,7 +1716,20 @@
       const params    = new URLSearchParams(window.location.search);
       const projectId = params.get('id');
 
-      if (!projectId) { location.replace('index.html'); return; }
+      // Check role from sessionStorage to decide redirect fallback and rewrite links
+      const role = sessionStorage.getItem('portfolio_role');
+      const homePage = role === 'admin' ? 'admin.html' : 'index.html';
+
+      if (role === 'admin') {
+        document.querySelectorAll('a').forEach(link => {
+          let href = link.getAttribute('href');
+          if (href && href.startsWith('index.html')) {
+            link.setAttribute('href', href.replace('index.html', 'admin.html'));
+          }
+        });
+      }
+
+      if (!projectId) { location.replace(homePage); return; }
 
       // Create and inject global screen blurred loader overlay
       const globalLoader = document.createElement('div');
@@ -1785,7 +1798,7 @@
         return;
       }
 
-      if (!project) { location.replace('index.html'); return; }
+      if (!project) { location.replace(homePage); return; }
 
       // Clear timeouts and remove loader
       clearTimeout(stepTimeout1);

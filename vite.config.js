@@ -16,6 +16,7 @@ export default defineConfig({
       input: {
         main: resolve('web-src/index.html'),
         projects: resolve('web-src/projects.html'),
+        admin: resolve('web-src/admin.html'),
         certificates: resolve('web-src/certificates.html'),
         details: resolve('web-src/project-details.html')
       }

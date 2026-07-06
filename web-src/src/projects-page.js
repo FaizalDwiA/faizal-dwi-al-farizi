@@ -66,6 +66,36 @@ document.addEventListener('DOMContentLoaded', async () => {
   initCursor();
   initWaModal();
 
+  // Check role from sessionStorage
+  const role = sessionStorage.getItem('portfolio_role');
+  if (role === 'admin') {
+    // 1. Update logo link
+    const navLogo = document.querySelector('.nav-logo');
+    if (navLogo) {
+      navLogo.setAttribute('href', 'admin.html');
+    }
+
+    // 2. Update navbar links
+    const navLinks = document.querySelectorAll('#navLinks a');
+    navLinks.forEach(link => {
+      let href = link.getAttribute('href');
+      if (href && href.includes('index.html')) {
+        href = href.replace('index.html', 'admin.html');
+        link.setAttribute('href', href);
+      }
+    });
+
+    // 3. Update breadcrumbs
+    const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+    breadcrumbLinks.forEach(link => {
+      let href = link.getAttribute('href');
+      if (href && href.includes('index.html')) {
+        href = href.replace('index.html', 'admin.html');
+        link.setAttribute('href', href);
+      }
+    });
+  }
+
   const projGrid = document.getElementById('proj-grid-container');
   const projCountEl = document.getElementById('projCount');
   const searchInput = document.getElementById('projSearchInput');

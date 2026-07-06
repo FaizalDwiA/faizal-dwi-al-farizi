@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Check if user came from IT Support page
   const urlParams = new URLSearchParams(window.location.search);
   const isItSupport = urlParams.get('role') === 'itsupport';
+  
+  // Check role from sessionStorage
+  const role = sessionStorage.getItem('portfolio_role');
+  const isAdmin = role === 'admin';
 
   if (isItSupport) {
     // Override accent color variables to Matrix Green
@@ -60,6 +64,32 @@ document.addEventListener('DOMContentLoaded', async () => {
       let href = link.getAttribute('href');
       if (href && href.includes('index.html')) {
         link.setAttribute('href', 'index.html');
+      }
+    });
+  } else if (isAdmin) {
+    // Update navbar brand logo
+    const navLogo = document.querySelector('.nav-logo');
+    if (navLogo) {
+      navLogo.setAttribute('href', 'admin.html');
+    }
+
+    // Update navbar links
+    const navLinks = document.querySelectorAll('#navLinks a');
+    navLinks.forEach(link => {
+      let href = link.getAttribute('href');
+      if (href && href.includes('index.html')) {
+        href = href.replace('index.html', 'admin.html');
+        link.setAttribute('href', href);
+      }
+    });
+
+    // Update breadcrumb links
+    const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+    breadcrumbLinks.forEach(link => {
+      let href = link.getAttribute('href');
+      if (href && href.includes('index.html')) {
+        href = href.replace('index.html', 'admin.html');
+        link.setAttribute('href', href);
       }
     });
   }

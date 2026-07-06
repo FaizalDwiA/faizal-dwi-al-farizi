@@ -39,6 +39,13 @@ function formatDriveImageUrl(url) {
 
 // Initialize all modules when document is fully loaded
 document.addEventListener('DOMContentLoaded', async () => {
+  // Set portfolio role based on pathname
+  if (window.location.pathname.includes('admin.html')) {
+    sessionStorage.setItem('portfolio_role', 'admin');
+  } else if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+    sessionStorage.setItem('portfolio_role', 'user');
+  }
+
   // 1. Initialize cursor tracking and section particles
   initCursor();
   // initSectionParticles(); // DISABLED: animasi hujan per section
