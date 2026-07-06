@@ -24,10 +24,17 @@ export function initCursor() {
   let clickState = 'normal'; // 'normal', 'scrambling', 'compiling'
   let scrambleStartTime = 0;
   let compileStartTime = 0;
-  const GLYPHS = '$%&?#@*!01x_';
+  
+  // Check role from sessionStorage
+  const role = sessionStorage.getItem('portfolio_role');
+  const isAdmin = role === 'admin';
 
-  // ── CODE SNAKE CONFIG ──
-  const SYMBOLS = ['</>', '{ }', '=>', ';', 'const', 'dev', '[]', '&&', '||', '++', '()', '$'];
+  const GLYPHS = isAdmin ? '01$%*#=+-/fx' : '$%&?#@*!01x_';
+
+  // ── CODE/CURSOR SNAKE CONFIG ──
+  const SYMBOLS = isAdmin 
+    ? ['fx()', '[xls]', '[csv]', '[doc]', '[pdf]', 'sum', 'if', '=', '$', 'qty', 'stock', 'data']
+    : ['</>', '{ }', '=>', ';', 'const', 'dev', '[]', '&&', '||', '++', '()', '$'];
   const segments = [];
   const totalSegments = SYMBOLS.length;
   
@@ -69,14 +76,21 @@ export function initCursor() {
 
   // ── CODE/KEYWORD EMITTER TRAIL CONFIG ──
   const trailWords = [];
-  const CODE_KEYWORDS = [
-    'const', 'let', 'function', 'return', 'import', 'export', 'class', 
-    'if', 'else', 'for', 'while', '=>', '||', '&&', '++', '--', '===', 
-    '<?php', 'echo', 'public', 'private', 'async', 'await', 'try', 'catch', 
-    'git add', 'git commit', 'git push', 'npm run dev', 'composer install',
-    'pip install', 'python', 'javascript', 'php', 'laravel', 'mysql', 'CI3',
-    'node', 'npm', 'yarn', 'docker', 'nginx', 'api', 'json', 'null', 'true', 'false'
-  ];
+  const CODE_KEYWORDS = isAdmin
+    ? [
+        '=VLOOKUP()', '=XLOOKUP()', '=SUMIFS()', '=IFERROR()', '=INDEX()', '=MATCH()',
+        'Pivot Table', 'Stock Opname', 'Stock In', 'Stock Out', 'Data Entry',
+        'Purchase Order', 'Invoice', 'Database', 'Setup LAN', 'Printer Sharing',
+        'Backup Data', 'Troubleshoot', 'Archive', 'Logistik', 'Excel', 'Google Sheets'
+      ]
+    : [
+        'const', 'let', 'function', 'return', 'import', 'export', 'class', 
+        'if', 'else', 'for', 'while', '=>', '||', '&&', '++', '--', '===', 
+        '<?php', 'echo', 'public', 'private', 'async', 'await', 'try', 'catch', 
+        'git add', 'git commit', 'git push', 'npm run dev', 'composer install',
+        'pip install', 'python', 'javascript', 'php', 'laravel', 'mysql', 'CI3',
+        'node', 'npm', 'yarn', 'docker', 'nginx', 'api', 'json', 'null', 'true', 'false'
+      ];
 
   let lastEmitX = mouseX;
   let lastEmitY = mouseY;
@@ -109,7 +123,9 @@ export function initCursor() {
 
   // ── CLICK MUTATING GLITCH PARTICLES CONFIG ──
   const glitchParticles = [];
-  const GLITCH_GLYPHS = ['0', '1', '[', ']', '{', '}', ';', '=>', '++', '--', '&&', '||', '!', '$', '?', '#', 'x', 'y', 'f', 'a'];
+  const GLITCH_GLYPHS = isAdmin
+    ? ['SUM', 'IF', 'QTY', 'A1', 'B2', 'C3', '$', '%', '=', '*', '+', '-', '/']
+    : ['0', '1', '[', ']', '{', '}', ';', '=>', '++', '--', '&&', '||', '!', '$', '?', '#', 'x', 'y', 'f', 'a'];
 
   document.addEventListener('click', e => {
     // 1. Trigger Scramble Disintegration State

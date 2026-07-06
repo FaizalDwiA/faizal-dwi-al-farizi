@@ -234,7 +234,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       termContent.innerHTML = '';
       
-      const lines = [
+      const role = sessionStorage.getItem('portfolio_role');
+      const isAdmin = role === 'admin';
+
+      const lines = isAdmin ? [
         { text: '$ ./excel_and_system_audit.sh --mode=active', type: 'cmd', delay: 200 },
         { text: 'Memulai verifikasi integritas data & kesiapan sistem IT...', type: 'info', delay: 600 },
         { text: '[EXCEL] Memeriksa tautan workbook & data sheet... <span class="term-success">[ OK ]</span>', type: 'info', delay: 800 },
@@ -244,6 +247,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         { text: '[PRINTER] Memeriksa koneksi sharing printer & LAN... <span class="term-success">[ ONLINE ]</span>', type: 'info', delay: 900 },
         { text: '[BACKUP] Verifikasi skema backup data arsip otomatis... <span class="term-success">[ SECURE ]</span>', type: 'info', delay: 800 },
         { text: '<span class="term-success" style="font-weight:bold;">Integritas data Excel & sistem IT 100% optimal! Seluruh tes berhasil dilalui.</span>', type: 'success', delay: 800 },
+        { text: '<button id="backToProfileBtn" class="terminal-diag-btn" style="margin-top:0.8rem; font-size:0.6rem;"><i class="bi bi-arrow-left"></i> KEMBALI KE PROFIL</button>', type: 'action', delay: 400 }
+      ] : [
+        { text: '$ ./system_diagnostics.sh --mode=unified', type: 'cmd', delay: 200 },
+        { text: 'Memulai verifikasi integritas sistem & server local...', type: 'info', delay: 600 },
+        { text: '[PORT] Memeriksa status server lokal dev... <span class="term-success">[ 1174 ONLINE ]</span>', type: 'info', delay: 800 },
+        { text: '[FIREBASE] Sinkronisasi database & security rules... <span class="term-success">[ SECURE ]</span>', type: 'info', delay: 600 },
+        { text: '[COMPILER] Memeriksa dependensi package... <span class="term-success">[ 0 VULNERABILITIES ]</span>', type: 'info', delay: 1000 },
+        { text: '[CPU] Pemindaian core prosesor PC Developer... <span class="term-success">[ OK ]</span>', type: 'info', delay: 600 },
+        { text: '[CLEANUP] Pembersihan file temporer & build cache... <span class="term-success">[ DONE ]</span>', type: 'info', delay: 900 },
+        { text: '<span class="term-success" style="font-weight:bold;">Sistem dan server pengembang 100% optimal! Seluruh tes berhasil dilalui.</span>', type: 'success', delay: 800 },
         { text: '<button id="backToProfileBtn" class="terminal-diag-btn" style="margin-top:0.8rem; font-size:0.6rem;"><i class="bi bi-arrow-left"></i> KEMBALI KE PROFIL</button>', type: 'action', delay: 400 }
       ];
       
