@@ -19,7 +19,7 @@ import { initProjects } from './scripts/projects.js';
 import { initSertifikat } from './scripts/sertifikat.js';
 import { initWaModal } from './scripts/waModal.js';
 import { initAnimations } from './scripts/animations.js';
-import { fetchProjects, fetchCertificates } from './firebase/firestore.js';
+import { fetchProjects, fetchCertificates, fetchAdminProjects } from './firebase/firestore.js';
 
 // Helper function to format Google Drive direct links to stable googleusercontent endpoint wrapped in weserv proxy
 function formatDriveImageUrl(url) {
@@ -153,11 +153,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch projects and certificates from Firebase Firestore
+  const role = sessionStorage.getItem('portfolio_role');
+  const isAdmin = role === 'admin';
+
   let projectsList = [];
+  let adminProjectsList = [];
   let sertifikatList = [];
   try {
-    // Ambil kedua data secara paralel menggunakan Promise.all
-    const [projectsRes, certsRes] = await Promise.all([
+    // Fetch data based on role
+    const promises = [
       fetchProjects().catch(err => {
         console.error("Gagal mengambil data Projects:", err);
         return null;
@@ -166,11 +170,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Gagal mengambil data Sertifikat:", err);
         return null;
       })
-    ]);
+    ];
 
-    // Parsing data Projects
+    if (isAdmin) {
+      promises.push(
+        fetchAdminProjects().catch(err => {
+          console.error("Gagal mengambil data Admin Projects:", err);
+          return null;
+        })
+      );
+    }
+
+    const results = await Promise.all(promises);
+    const projectsRes = results[0];
+    const certsRes = results[1];
+    const adminProjectsRes = isAdmin ? results[2] : null;
+
+    // Parsing data Projects (Software)
     if (projectsRes && Array.isArray(projectsRes)) {
       projectsList = projectsRes.map(p => {
+        const formattedImages = p.images ? p.images.map(img => formatDriveImageUrl(img)) : [];
+        return {
+          ...p,
+          images: formattedImages
+        };
+      });
+    }
+
+    // Parsing data Admin Projects (Excel)
+    if (isAdmin && adminProjectsRes && Array.isArray(adminProjectsRes)) {
+      adminProjectsList = adminProjectsRes.map(p => {
         const formattedImages = p.images ? p.images.map(img => formatDriveImageUrl(img)) : [];
         return {
           ...p,
@@ -199,14 +228,51 @@ document.addEventListener('DOMContentLoaded', async () => {
   }, 400);
 
   // 2. Render dynamic contents first (Show maximum 6 projects and 4 certificates on homepage)
-  initProjects(projectsList.slice(0, 6));
+  if (isAdmin) {
+    const mappedAdminProjects = adminProjectsList.map(p => ({
+      ...p,
+      link: `project-details-admin.html?id=${p.id}`
+    }));
+    const mappedSoftwareProjects = projectsList.map(p => ({
+      ...p,
+      link: `project-details.html?id=${p.id}`
+    }));
+
+    // Render admin projects by default
+    initProjects(mappedAdminProjects.slice(0, 6));
+
+    // Setup Admin filter bar events
+    const adminFilterBar = document.getElementById('adminProjFilterBar');
+    if (adminFilterBar) {
+      const filterBtns = adminFilterBar.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const source = this.dataset.source;
+          if (source === 'admin') {
+            initProjects(mappedAdminProjects.slice(0, 6));
+          } else {
+            initProjects(mappedSoftwareProjects.slice(0, 6));
+          }
+        });
+      });
+    }
+  } else {
+    initProjects(projectsList.slice(0, 6));
+  }
+
   initSertifikat(sertifikatList.slice(0, 4));
 
   // 3. Setup WhatsApp modal interactions
   initWaModal();
 
   // 4. Trigger animations and observers (including stats count which reads project/cert data counts)
-  initAnimations(projectsList, sertifikatList);
+  if (isAdmin) {
+    initAnimations([...adminProjectsList, ...projectsList], sertifikatList);
+  } else {
+    initAnimations(projectsList, sertifikatList);
+  }
 
   // 5. Fix for initial hash scroll (e.g. reload on #sertifikat) after dynamic content rendering
   if (window.location.hash) {

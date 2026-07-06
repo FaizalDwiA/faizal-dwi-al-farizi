@@ -18,7 +18,9 @@ export default defineConfig({
         projects: resolve('web-src/projects.html'),
         admin: resolve('web-src/admin.html'),
         certificates: resolve('web-src/certificates.html'),
-        details: resolve('web-src/project-details.html')
+        details: resolve('web-src/project-details.html'),
+        projectsAdmin: resolve('web-src/projects-admin.html'),
+        detailsAdmin: resolve('web-src/project-details-admin.html')
       }
     }
   }

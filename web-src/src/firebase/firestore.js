@@ -41,3 +41,23 @@ export async function fetchCertificates() {
   return certificates;
 }
 
+/**
+ * Fetch all admin projects from Firestore and sort them by order.
+ * @returns {Promise<Array>} List of admin project objects.
+ */
+export async function fetchAdminProjects() {
+  const querySnapshot = await getDocs(collection(db, "admin_projects"));
+  const projects = [];
+  querySnapshot.forEach((doc) => {
+    projects.push({
+      id: doc.id,
+      ...doc.data()
+    });
+  });
+
+  // Urutkan langsung di JavaScript berdasarkan field order secara ascending (kecil ke besar)
+  projects.sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+
+  return projects;
+}
+

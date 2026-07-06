@@ -83,7 +83,7 @@ export function initProjects(projectsList) {
     const desc = p.overview || '';
 
     // 4. Map link
-    const link = `project-details.html?id=${p.id}`;
+    const link = p.link || `project-details.html?id=${p.id}`;
 
     return {
       ...p,

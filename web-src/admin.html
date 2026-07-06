@@ -599,10 +599,20 @@
       <p class="section-desc">Beberapa proyek yang pernah saya kerjakan — dari sistem enterprise hingga tools pribadi.
       </p>
 
+      <!-- Category Filter buttons in admin.html -->
+      <div class="filter-bar fade-in" id="adminProjFilterBar" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button class="filter-btn active" data-source="admin">
+          <span class="filter-icon">📊</span> Admin & Excel
+        </button>
+        <button class="filter-btn" data-source="software">
+          <span class="filter-icon">💻</span> Software & IT
+        </button>
+      </div>
+
       <div class="proj-grid" id="proj-grid-container"></div>
 
       <div style="text-align: center; margin-top: 3.5rem;" class="fade-in">
-        <a href="projects.html" class="btn-primary"
+        <a href="projects-admin.html" class="btn-primary"
           style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.8rem 2rem;">
           ⚡ Lihat Semua Projects →
         </a>

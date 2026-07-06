@@ -30,7 +30,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-const PROJECTS_URL = "https://script.google.com/macros/s/AKfycbwBoJvyliz4gjjnlJnGhIctKAk9S4K3eezKsPYE7ZLBZgfDYgnpTp_Q5_kGivh7jSQZ/exec";
+const PROJECTS_DEV_URL = "https://script.google.com/macros/s/AKfycbwBoJvyliz4gjjnlJnGhIctKAk9S4K3eezKsPYE7ZLBZgfDYgnpTp_Q5_kGivh7jSQZ/exec";
+const PROJECTS_EXCEL_URL = "https://script.google.com/macros/s/AKfycbwBSRG6EReQM1yNgJDUZLLB7lsGFkEE7tT_gXIV0fil-oqz7UG9Sj6-Ii8XmBfps_KqkA/exec";
 const CERTS_URL = "https://script.google.com/macros/s/AKfycbxPSbET_yYEvSI2ymTAJgW5hb8mi_xmhbgZY0Sz3GJw_uo_7opl8uh_az91MnZCkhPb/exec";
 
 async function run() {
@@ -43,6 +44,13 @@ async function run() {
       await db.collection("projects").doc(docSnap.id).delete();
     }
 
+    console.log("Cleaning up old admin projects from Firestore...");
+    const adminProjSnap = await db.collection("admin_projects").get();
+    for (const docSnap of adminProjSnap.docs) {
+      console.log(`Deleting old admin project doc: ${docSnap.id}...`);
+      await db.collection("admin_projects").doc(docSnap.id).delete();
+    }
+
     console.log("Cleaning up old certificates from Firestore...");
     const certSnap = await db.collection("certificates").get();
     for (const docSnap of certSnap.docs) {
@@ -51,16 +59,20 @@ async function run() {
     }
 
     // 2. Fetch and migrate projects
-    console.log("Fetching projects from Google Apps Script...");
-    const projRes = await fetch(PROJECTS_URL + `?t=${Date.now()}`);
-    const projData = await projRes.json();
-    
-    console.log("Migrating projects to Firestore...");
-    let projectOrder = 0;
-    for (const [id, project] of Object.entries(projData)) {
+    console.log("Fetching IT/Developer projects from Google Apps Script...");
+    const devRes = await fetch(PROJECTS_DEV_URL + `?t=${Date.now()}`);
+    const devData = await devRes.json();
+
+    console.log("Fetching Excel/Admin projects from Google Apps Script...");
+    const excelRes = await fetch(PROJECTS_EXCEL_URL + `?t=${Date.now()}`);
+    const excelData = await excelRes.json();
+
+    console.log("Migrating IT/Developer projects to Firestore...");
+    let devOrder = 0;
+    for (const [id, project] of Object.entries(devData)) {
       if (id === '_lastUpdated' || id === '_certificates') continue;
-      projectOrder++;
-      console.log(`Writing project: ${id} (order: ${projectOrder})...`);
+      devOrder++;
+      console.log(`Writing IT project: ${id} (order: ${devOrder})...`);
       await db.collection("projects").doc(id).set({
         title: project.title || "",
         client: project.client || "",
@@ -71,7 +83,27 @@ async function run() {
         tech: project.tech || [],
         features: project.features || [],
         images: project.images || [],
-        order: (project.urut !== undefined && project.urut !== "") ? Number(project.urut) : projectOrder
+        order: (project.urut !== undefined && project.urut !== "") ? Number(project.urut) : devOrder
+      });
+    }
+
+    console.log("Migrating Excel/Admin projects to Firestore...");
+    let excelOrder = 0;
+    for (const [id, project] of Object.entries(excelData)) {
+      if (id === '_lastUpdated' || id === '_certificates') continue;
+      excelOrder++;
+      console.log(`Writing Excel project: ${id} (order: ${excelOrder})...`);
+      await db.collection("admin_projects").doc(id).set({
+        title: project.title || "",
+        client: project.client || "",
+        date: project.date || "",
+        category: project.category || "",
+        website: project.website || "",
+        overview: project.overview || "",
+        tech: project.tech || [],
+        features: project.features || [],
+        images: project.images || [],
+        order: (project.urut !== undefined && project.urut !== "") ? Number(project.urut) : excelOrder
       });
     }
 
