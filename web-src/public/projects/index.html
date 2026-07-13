@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    const path = window.location.pathname;
+    const base = path.includes('/faizal-dwi-al-farizi') ? '/faizal-dwi-al-farizi' : '';
+    window.location.replace(base + '/#/projects' + window.location.search + window.location.hash);
+  </script>
+</head>
+<body>
+  <p>Redirecting to Projects page...</p>
+</body>
+</html>

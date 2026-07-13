@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
-import injectHTML from 'vite-plugin-html-inject'
 
 export default defineConfig({
   root: 'web-src',
   base: './',
-  plugins: [injectHTML()],
+  plugins: [react()],
   server: {
     port: 1174
   },
@@ -14,13 +14,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve('web-src/index.html'),
-        projects: resolve('web-src/projects.html'),
-        admin: resolve('web-src/admin.html'),
-        certificates: resolve('web-src/certificates.html'),
-        details: resolve('web-src/project-details.html'),
-        projectsAdmin: resolve('web-src/projects-admin.html'),
-        detailsAdmin: resolve('web-src/project-details-admin.html')
+        main: resolve('web-src/index.html')
       }
     }
   }
