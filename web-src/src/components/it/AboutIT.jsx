@@ -22,7 +22,7 @@ export default function AboutIT() {
               <div className="hud-corner bottom-right"></div>
               <div className="hud-glow"></div>
 
-              <img src="/assets/img/profile/profile.webp" alt="Faizal Dwi Al Farizi" className="about-photo" />
+              <img src="assets/img/profile/profile.webp" alt="Faizal Dwi Al Farizi" className="about-photo" />
 
               {/* Scanline overlay */}
               <div className="scanline"></div>

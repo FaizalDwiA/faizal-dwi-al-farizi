@@ -91,7 +91,7 @@ export default function ProjectDetail({ isAdmin = false }) {
 
   if (!project) return null;
 
-  const images = project.images.length > 0 ? project.images : ['/assets/img/icon.webp'];
+  const images = project.images.length > 0 ? project.images : ['assets/img/icon.webp'];
 
   // Handle URL alert trigger for CV Rosin private systems
   const handleLinkClick = (e, url) => {
