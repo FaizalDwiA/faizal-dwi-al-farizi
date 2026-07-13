@@ -76,6 +76,37 @@ export default function Projects({
   const [activeTech, setActiveTech] = useState('*');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Check if a category button should be disabled based on current tech filter
+  const isKategoriBtnDisabled = (kategoriVal) => {
+    if (kategoriVal === '*') return false;
+    return !projects.some(p => {
+      const rawKategori = p.category ? p.category.trim() : 'Website';
+      const kategori = rawKategori.charAt(0).toUpperCase() + rawKategori.slice(1).toLowerCase();
+
+      const matchKategori = kategori === kategoriVal;
+      const matchTech = activeTech === '*' || (p.tech && p.tech.includes(activeTech));
+      return matchKategori && matchTech;
+    });
+  };
+
+  // Check if a tech button should be disabled based on current category filter
+  const isTechBtnDisabled = (techVal) => {
+    if (techVal === '*') return false;
+    return !projects.some(p => {
+      const rawKategori = p.category ? p.category.trim() : 'Website';
+      const kategori = rawKategori.charAt(0).toUpperCase() + rawKategori.slice(1).toLowerCase();
+
+      const matchKategori = activeKategori === '*' || kategori === activeKategori;
+      const matchTech = p.tech && p.tech.includes(techVal);
+      return matchKategori && matchTech;
+    });
+  };
+
+  const resetFilters = () => {
+    setActiveKategori('*');
+    setActiveTech('*');
+  };
+
   if (loading) {
     return (
       <section id="projects" style={{ minHeight: '30vh' }}>
@@ -130,16 +161,41 @@ export default function Projects({
     );
   }
 
+  // Extract categories dynamically from the data
+  const listKategori = [...new Set(projects.map(p => {
+    const rawKategori = p.category ? p.category.trim() : 'Website';
+    return rawKategori.charAt(0).toUpperCase() + rawKategori.slice(1).toLowerCase();
+  }).filter(Boolean))];
+
+  const getCategoryIcon = (cat) => {
+    const lower = cat.toLowerCase();
+    const icons = {
+      website: '🖥️',
+      python: '🐍',
+      webview: '📱',
+      dokumentasi: '📔',
+      android: '🤖'
+    };
+    for (const [key, icon] of Object.entries(icons)) {
+      if (lower.includes(key)) return icon;
+    }
+    return '📁';
+  };
+
+  const getCategoryLabel = (cat) => {
+    if (cat.toLowerCase() === 'webview') return 'Webview';
+    return cat.charAt(0).toUpperCase() + cat.slice(1);
+  };
+
+  // Extract technology tags dynamically from all projects
+  const uniqueTechs = [...new Set(projects.flatMap(p => p.tech || []).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+
   // Pre-process raw projects
   const mappedProjects = projects.map(p => {
-    const categoryLower = (p.category || '').toLowerCase();
+    const rawKategori = p.category ? p.category.trim() : 'Website';
+    const kategori = rawKategori.charAt(0).toUpperCase() + rawKategori.slice(1).toLowerCase();
+    const categoryLower = rawKategori.toLowerCase();
     
-    // Choose category for Software
-    let kategori = 'website';
-    if (categoryLower.includes('python')) kategori = 'python';
-    else if (categoryLower.includes('document') || categoryLower.includes('dokumen')) kategori = 'dokumentasi';
-    else if (categoryLower.includes('webview')) kategori = 'webview';
-
     // Choose appropriate icon
     let icon = 'bi bi-grid';
     if (detailUrlPrefix.includes('admin')) {
@@ -151,7 +207,14 @@ export default function Projects({
         }
       }
     } else {
-      icon = idIconMap[p.id] || categoryIconMapSoftware[kategori] || 'bi bi-grid';
+      let matchedIcon = null;
+      for (const [key, val] of Object.entries(categoryIconMapSoftware)) {
+        if (categoryLower.includes(key)) {
+          matchedIcon = val;
+          break;
+        }
+      }
+      icon = idIconMap[p.id] || matchedIcon || 'bi bi-grid';
     }
 
     const desc = p.overview || '';
@@ -232,42 +295,78 @@ export default function Projects({
 
         {/* Software Gallery Filters (Gallery IT) */}
         {showFilters && !showSearch && (
-          <>
-            {/* Category Filter */}
-            <div className="filter-bar fade-in visible" id="projFilterBar" style={{ marginBottom: '1.2rem' }}>
-              <button className={`filter-btn ${activeKategori === '*' ? 'active' : ''}`} onClick={() => setActiveKategori('*')}>
-                <span className="filter-icon">⊞</span> Semua
-              </button>
-              <button className={`filter-btn ${activeKategori === 'website' ? 'active' : ''}`} onClick={() => setActiveKategori('website')}>
-                <span className="filter-icon">🖥️</span> Website
-              </button>
-              <button className={`filter-btn ${activeKategori === 'python' ? 'active' : ''}`} onClick={() => setActiveKategori('python')}>
-                <span className="filter-icon">🐍</span> Python
-              </button>
-              <button className={`filter-btn ${activeKategori === 'webview' ? 'active' : ''}`} onClick={() => setActiveKategori('webview')}>
-                <span className="filter-icon">📱</span> Webview
-              </button>
-              <button className={`filter-btn ${activeKategori === 'dokumentasi' ? 'active' : ''}`} onClick={() => setActiveKategori('dokumentasi')}>
-                <span className="filter-icon">📔</span> Dokumentasi
-              </button>
+          <div id="projFilterBarSection">
+            {/* Desktop Filters */}
+            <div className="proj-filter-desktop">
+              {/* Category Filter */}
+              <div className="filter-row" style={{ marginBottom: '1.2rem', width: '100%' }}>
+                <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '0.75rem', color: 'var(--accent)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span>🗂</span> Kategori / Tipe
+                </div>
+                <div className="filter-bar" style={{ margin: 0 }}>
+                  <button className={`filter-btn ${activeKategori === '*' ? 'active' : ''}`} onClick={() => setActiveKategori('*')}>
+                    <span className="filter-icon">⊞</span> Semua
+                  </button>
+                  {listKategori.map(cat => (
+                    <button 
+                      key={cat}
+                      className={`filter-btn ${activeKategori === cat ? 'active' : ''} ${isKategoriBtnDisabled(cat) ? 'disabled' : ''}`} 
+                      onClick={() => !isKategoriBtnDisabled(cat) && setActiveKategori(cat)}
+                    >
+                      <span className="filter-icon">{getCategoryIcon(cat)}</span> {getCategoryLabel(cat)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tech Filter */}
+              <div className="filter-row" style={{ marginBottom: '0.8rem', width: '100%' }}>
+                <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '0.75rem', color: 'var(--accent2)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span>🔧</span> Teknologi
+                </div>
+                <div className="filter-bar" style={{ margin: 0, gap: '0.4rem' }}>
+                  <button className={`filter-btn ${activeTech === '*' ? 'active' : ''}`} onClick={() => setActiveTech('*')}>
+                    * Semua
+                  </button>
+                  {uniqueTechs.map(t => (
+                    <button 
+                      key={t}
+                      className={`filter-btn ${activeTech === t ? 'active' : ''} ${isTechBtnDisabled(t) ? 'disabled' : ''}`}
+                      onClick={() => !isTechBtnDisabled(t) && setActiveTech(t)}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Tech Filter */}
-            <div className="filter-bar fade-in visible" id="techFilterBar" style={{ gap: '0.4rem' }}>
-              <button className={`filter-btn ${activeTech === '*' ? 'active' : ''}`} onClick={() => setActiveTech('*')}>
-                *
-              </button>
-              {['PHP', 'Laravel', 'CodeIgniter', 'JavaScript', 'React', 'Python', 'MySQL', 'PostgreSQL', 'CSS'].map(t => (
-                <button 
-                  key={t}
-                  className={`filter-btn ${activeTech === t ? 'active' : ''}`}
-                  onClick={() => setActiveTech(t)}
-                >
-                  {t}
-                </button>
-              ))}
+            {/* Mobile Filters */}
+            <div className="proj-filter-mobile">
+              <div style={{ marginBottom: '0.8rem' }}>
+                <label htmlFor="projSelectKategori" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '0.75rem', color: 'var(--accent)', display: 'block', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500 }}>🗂 Kategori / Tipe</label>
+                <select id="projSelectKategori" className="filter-select" value={activeKategori} onChange={(e) => setActiveKategori(e.target.value)}>
+                  <option value="*">⊞ Semua Kategori</option>
+                  {listKategori.map(cat => (
+                    <option key={cat} value={cat} disabled={isKategoriBtnDisabled(cat)}>
+                      {getCategoryIcon(cat)} {getCategoryLabel(cat)} {isKategoriBtnDisabled(cat) ? '(Tidak Tersedia)' : ''}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="projSelectTech" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '0.75rem', color: 'var(--accent2)', display: 'block', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500 }}>🏢 Teknologi</label>
+                <select id="projSelectTech" className="filter-select" value={activeTech} onChange={(e) => setActiveTech(e.target.value)}>
+                  <option value="*">⊞ Semua Teknologi</option>
+                  {uniqueTechs.map(t => (
+                    <option key={t} value={t} disabled={isTechBtnDisabled(t)}>
+                      {t} {isTechBtnDisabled(t) ? '(Tidak Tersedia)' : ''}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </>
+          </div>
         )}
 
         {/* Projects Display Count */}
@@ -280,8 +379,18 @@ export default function Projects({
         {/* Projects Grid */}
         <div className="proj-grid" id="proj-grid-container">
           {displayList.length === 0 ? (
-            <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '4rem 0', color: 'var(--text-muted)', fontFamily: "'JetBrains Mono',monospace" }}>
-              🔍 Tidak ada proyek yang cocok dengan filter atau pencarian Anda.
+            <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '4rem 1rem', color: 'var(--text-muted)', fontFamily: "'JetBrains Mono',monospace", border: '1px dashed var(--border)', borderRadius: '10px', background: 'rgba(6,9,14,0.3)', margin: '2rem 0' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🔍</div>
+              <div style={{ fontSize: '0.82rem', marginBottom: '1.5rem', color: 'var(--text-dim)', letterSpacing: '0.02em' }}>
+                Tidak ada proyek yang cocok dengan filter atau pencarian Anda.
+              </div>
+              <button 
+                onClick={resetFilters}
+                className="filter-btn" 
+                style={{ borderColor: 'var(--accent)', color: 'var(--accent)', fontSize: '0.7rem', padding: '0.5rem 1.2rem', cursor: 'pointer', background: 'rgba(0,212,255,0.02)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', borderRadius: '6px', fontFamily: "'JetBrains Mono',monospace" }}
+              >
+                ↺ Reset Semua Filter
+              </button>
             </div>
           ) : (
             displayList.map((p, i) => {
@@ -347,6 +456,16 @@ export default function Projects({
           </div>
         )}
       </div>
+      {/* Inject styling */}
+      <style id="proj-responsive-filter-style" dangerouslySetInnerHTML={{ __html: `
+        .proj-filter-desktop { display: block; }
+        .proj-filter-mobile { display: none; }
+        .filter-row { width: 100%; }
+        @media (max-width: 768px) {
+          .proj-filter-desktop { display: none; }
+          .proj-filter-mobile { display: block; margin-bottom: 1.5rem; }
+        }
+      `}} />
     </section>
   );
 }

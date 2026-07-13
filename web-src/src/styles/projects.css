@@ -349,4 +349,33 @@
   }
 }
 
+/* ── RESPONSIVE FILTER SELECTS ── */
+.filter-select {
+  width: 100%;
+  padding: 0.6rem 2.2rem 0.6rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300d4ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.85rem;
+  transition: border-color 0.2s;
+}
+.filter-select:focus { border-color: var(--accent) !important; }
+.filter-select option { background: var(--bg2); color: var(--text); }
 
+.filter-btn.disabled {
+  opacity: 0.22;
+  pointer-events: none;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.01) !important;
+  color: var(--text-muted) !important;
+}
