@@ -26,10 +26,20 @@ export default function App() {
   const [waOpen, setWaOpen] = useState(false);
 
   const queryParams = new URLSearchParams(location.search);
+
+  // Handle direct folder pathname access (especially on localhost where Vite doesn't redirect automatically)
+  const browserPath = window.location.pathname;
+  const cleanPath = browserPath.replace(/\/$/, ''); // remove trailing slash
+  const base = browserPath.includes('/faizal-dwi-al-farizi') ? '/faizal-dwi-al-farizi' : '';
+  const relativePath = base ? cleanPath.substring(base.length) : cleanPath;
+
   const isAdminPath = 
     location.pathname.startsWith('/admin') || 
     location.pathname.startsWith('/projects-admin') || 
     location.pathname.startsWith('/project-admin') ||
+    relativePath === '/admin' ||
+    relativePath === '/projects-admin' ||
+    relativePath === '/project-admin' ||
     queryParams.get('role') === 'admin';
   
   const role = isAdminPath ? 'admin' : 'user';
@@ -37,6 +47,14 @@ export default function App() {
 
   // Load Firestore data using custom hook (only load admin projects if on admin routes)
   const { projects, adminProjects, certificates, loading } = useFirestoreData(isAdminPath);
+
+  // Redirect local pathname routes to hash routes to match GitHub Pages redirect behavior
+  useEffect(() => {
+    const redirectRoutes = ['/admin', '/projects', '/projects-admin', '/certificates'];
+    if (redirectRoutes.includes(relativePath)) {
+      window.location.replace(base + '/#' + relativePath + window.location.search + window.location.hash);
+    }
+  }, [relativePath, base]);
 
   // Scrollspy & fade-in animations trigger
   useEffect(() => {

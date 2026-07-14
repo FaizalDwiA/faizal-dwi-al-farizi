@@ -15,6 +15,7 @@ import './styles/contact.css'
 import './styles/modal.css'
 import './styles/cursor.css'
 import './styles/animations.css'
+import './styles/details.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -36,17 +36,12 @@ export function useFirestoreData(isAdmin = false) {
           fetchCertificates().catch(err => {
             console.error("Gagal mengambil data Sertifikat:", err);
             return [];
+          }),
+          fetchAdminProjects().catch(err => {
+            console.error("Gagal mengambil data Admin Projects:", err);
+            return [];
           })
         ];
-
-        if (isAdmin) {
-          promises.push(
-            fetchAdminProjects().catch(err => {
-              console.error("Gagal mengambil data Admin Projects:", err);
-              return [];
-            })
-          );
-        }
 
         const results = await Promise.all(promises);
         
@@ -54,7 +49,7 @@ export function useFirestoreData(isAdmin = false) {
 
         const projectsRes = results[0] || [];
         const certsRes = results[1] || [];
-        const adminProjectsRes = isAdmin ? (results[2] || []) : [];
+        const adminProjectsRes = results[2] || [];
 
         // Format projects images
         const formattedProjects = projectsRes.map(p => ({
@@ -76,9 +71,7 @@ export function useFirestoreData(isAdmin = false) {
 
         setProjects(formattedProjects);
         setCertificates(formattedCerts);
-        if (isAdmin) {
-          setAdminProjects(formattedAdminProjects);
-        }
+        setAdminProjects(formattedAdminProjects);
         setLoading(false);
       } catch (err) {
         console.error("Error loading Firestore data in hook:", err);
