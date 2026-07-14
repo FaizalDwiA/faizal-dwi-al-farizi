@@ -16,6 +16,7 @@ import './styles/modal.css'
 import './styles/cursor.css'
 import './styles/animations.css'
 import './styles/details.css'
+import './styles/scroll-to-top.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

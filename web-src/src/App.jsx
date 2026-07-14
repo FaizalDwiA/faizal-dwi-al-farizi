@@ -8,6 +8,7 @@ import Footer from './components/common/Footer.jsx';
 import CustomCursor from './components/common/CustomCursor.jsx';
 import GlobalLoader from './components/common/GlobalLoader.jsx';
 import WaModal from './components/common/WaModal.jsx';
+import ScrollToTopButton from './components/common/ScrollToTopButton.jsx';
 
 // Pages
 import ITPage from './pages/ITPage.jsx';
@@ -163,6 +164,9 @@ export default function App() {
 
       {/* Contact modal overlay */}
       <WaModal isOpen={waOpen} onClose={() => setWaOpen(false)} />
+
+      {/* Floating Scroll To Top Button */}
+      <ScrollToTopButton />
     </>
   );
 }

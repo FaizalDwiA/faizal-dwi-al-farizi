@@ -1,0 +1,77 @@
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 46px;
+  height: 46px;
+  background: rgba(10, 25, 41, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 50%;
+  color: var(--accent);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.scroll-to-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scroll-to-top-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 
+    0 10px 35px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(10, 25, 41, 0.9);
+}
+
+.scroll-to-top-btn:hover .arrow-icon {
+  transform: translateY(-2px);
+}
+
+.scroll-to-top-btn:active {
+  transform: scale(0.92);
+}
+
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg); /* Mulai progress dari atas jam 12 */
+  pointer-events: none;
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.1s ease-out;
+}
+
+.arrow-icon {
+  font-size: 0.8rem;
+  transition: transform 0.25s ease;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+  }
+  .progress-ring {
+    width: 42px;
+    height: 42px;
+  }
+}
