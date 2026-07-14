@@ -49,10 +49,12 @@ export default function Certificates({ certificates = [], limit = null, showFilt
   const [activeJenis, setActiveJenis] = useState('*');
   const [activeSumber, setActiveSumber] = useState('*');
   const [lightboxIdx, setLightboxIdx] = useState(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   // Keyboard navigation for lightbox
   useEffect(() => {
     if (lightboxIdx === null) return;
+    setIsZoomed(false); // Reset zoom jika mengganti sertifikat
     
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') setLightboxIdx(null);
@@ -288,7 +290,14 @@ export default function Certificates({ certificates = [], limit = null, showFilt
             </button>
             <div className="lightbox-inner">
               <button className="lightbox-close" onClick={() => setLightboxIdx(null)}>✕</button>
-              <img src={currentLightboxCert.img} alt={currentLightboxCert.title} id="lightboxImg" />
+              <img 
+                src={currentLightboxCert.img} 
+                alt={currentLightboxCert.title} 
+                id="lightboxImg" 
+                style={{ cursor: 'zoom-in' }}
+                onClick={() => setIsZoomed(true)}
+                title="Klik untuk memperbesar"
+              />
               <div className="lightbox-info">
                 <div className="lightbox-meta" id="lightboxMeta">{currentLightboxCert.meta}</div>
                 <div className="lightbox-title" id="lightboxTitle">{currentLightboxCert.title}</div>
@@ -303,6 +312,23 @@ export default function Certificates({ certificates = [], limit = null, showFilt
                 </button>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Fullscreen Zoom Overlay */}
+        {lightboxIdx !== null && currentLightboxCert && isZoomed && (
+          <div className="lightbox-zoom-overlay" onClick={() => setIsZoomed(false)}>
+            <img src={currentLightboxCert.img} alt={currentLightboxCert.title} />
+            <div className="zoom-hint">Klik di mana saja untuk kembali</div>
+            <a 
+              href={currentLightboxCert.img} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="zoom-open-tab" 
+              onClick={(e) => e.stopPropagation()}
+            >
+              Buka di Tab Baru ↗
+            </a>
           </div>
         )}
       </div>
