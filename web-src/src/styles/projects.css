@@ -290,9 +290,9 @@
 }
 
 .page-hero {
-  padding: 7rem 0 3rem;
+  padding: 7rem 1.5rem 3rem;
   text-align: center;
-  background: linear-gradient(180deg, rgba(10, 25, 47, 1) 0%, rgba(5, 13, 27, 1) 100%);
+  background: linear-gradient(180deg, rgba(10, 25, 41, 1) 0%, rgba(5, 13, 27, 1) 100%);
   border-bottom: 1px dashed var(--border);
   width: 100%;
   position: relative;
@@ -301,13 +301,15 @@
 
 .page-hero-title {
   font-family: 'Syne', sans-serif;
-  font-size: 3.5rem;
+  font-size: clamp(1.5rem, 5vw, 3.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   margin-bottom: 1rem;
   color: #fff;
   line-height: 1.15;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .breadcrumb {
@@ -329,20 +331,21 @@
 }
 
 @media (max-width: 768px) {
-  .page-hero-title {
-    font-size: 2.8rem;
-  }
   .page-hero {
-    padding: 6rem 0 2.5rem;
+    padding: 6rem 1.5rem 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .breadcrumb .sep:last-of-type,
+  .breadcrumb #breadcrumbTitle {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .page-hero-title {
-    font-size: 2.0rem;
-  }
   .page-hero {
-    padding: 5rem 0 2rem;
+    padding: 5rem 1.5rem 2rem;
   }
   .breadcrumb {
     font-size: 0.7rem;
