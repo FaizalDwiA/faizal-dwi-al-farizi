@@ -274,7 +274,6 @@ export default function Certificates({ certificates = [], limit = null, showFilt
               setLightboxIdx(null);
             }
           }}>
-            <button className="lightbox-close" onClick={() => setLightboxIdx(null)}>✕</button>
             <button 
               className="lightbox-nav prev" 
               onClick={() => setLightboxIdx(prev => (prev - 1 + filtered.length) % filtered.length)}
@@ -288,11 +287,20 @@ export default function Certificates({ certificates = [], limit = null, showFilt
               ›
             </button>
             <div className="lightbox-inner">
+              <button className="lightbox-close" onClick={() => setLightboxIdx(null)}>✕</button>
               <img src={currentLightboxCert.img} alt={currentLightboxCert.title} id="lightboxImg" />
               <div className="lightbox-info">
                 <div className="lightbox-meta" id="lightboxMeta">{currentLightboxCert.meta}</div>
                 <div className="lightbox-title" id="lightboxTitle">{currentLightboxCert.title}</div>
                 <div className="lightbox-desc" id="lightboxDesc">{currentLightboxCert.desc || ''}</div>
+                
+                {/* Mobile close helper button */}
+                <button 
+                  className="lightbox-info-close-btn"
+                  onClick={() => setLightboxIdx(null)}
+                >
+                  ✕ Tutup Pratonton
+                </button>
               </div>
             </div>
           </div>

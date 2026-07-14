@@ -109,7 +109,7 @@ export default function App() {
       <Navbar links={navLinks} role={role} />
 
       {/* Main viewport */}
-      <main style={{ minHeight: '80vh', position: 'relative', zIndex: 1 }}>
+      <main style={{ minHeight: '80vh', position: 'relative' }}>
         <Routes>
           <Route 
             path="/" 
