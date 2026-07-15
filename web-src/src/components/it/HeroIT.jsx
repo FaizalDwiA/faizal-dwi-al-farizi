@@ -100,8 +100,8 @@ export default function HeroIT({ projectCount = 0, certificateCount = 0 }) {
           <div className="hero-role">{roleCmd}</div>
           <p className="hero-desc">{desc}</p>
           <div className="hero-ctas">
-            <a href="#services" className="btn-primary">▶ Lihat Layanan</a>
-            <a href="#projects" className="btn-outline">📁 Proyek Web</a>
+            <button onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} className="btn-primary">▶ Lihat Layanan</button>
+            <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="btn-outline">📁 Proyek Web</button>
           </div>
           <div className="hero-stats">
             <div className="stat">
