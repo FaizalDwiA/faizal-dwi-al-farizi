@@ -11,7 +11,7 @@ export const itData = {
     { label: "tentang", href: "#about" },
     { label: "skills", href: "#skills" },
     { label: "riwayat", href: "#experience" },
-    { label: "layanan", href: "#services" },
+    { label: "spesialisasi", href: "#services" },
     { label: "projects", href: "#projects" },
     { label: "sertifikat", href: "#sertifikat" },
     { label: "kontak", href: "#contact" }
@@ -118,9 +118,9 @@ export const itData = {
     ]
   },
   services: {
-    label: "04 — layanan",
-    title: "IT Services & Solutions",
-    desc: "Layanan profesional terpadu yang saya sediakan untuk menunjang operasional digital bisnis Anda.",
+    label: "04 — spesialisasi",
+    title: "Spesialisasi & Solusi IT",
+    desc: "Solusi dan spesialisasi profesional terpadu yang saya sediakan untuk menunjang operasional digital bisnis Anda.",
     list: [
       {
         type: "IT SOFTWARE",

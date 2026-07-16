@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Replace projects link to services
         if (href.includes('#projects')) {
           href = href.replace('#projects', '#services');
-          link.textContent = 'layanan';
+          link.textContent = 'spesialisasi';
         }
         // Keep the role query parameter on internal pages if needed (e.g. to keep the state)
         if (href.includes('certificates.html')) {

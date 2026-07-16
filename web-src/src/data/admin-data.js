@@ -11,7 +11,7 @@ export const adminData = {
     { label: "tentang", href: "#about" },
     { label: "skills", href: "#skills" },
     { label: "riwayat", href: "#experience" },
-    { label: "layanan", href: "#services" },
+    { label: "spesialisasi", href: "#services" },
     { label: "projects", href: "#projects" },
     { label: "sertifikat", href: "#sertifikat" },
     { label: "kontak", href: "#contact" }
@@ -119,9 +119,9 @@ export const adminData = {
     ]
   },
   services: {
-    label: "04 — layanan",
-    title: "Admin & IT Support Services",
-    desc: "Layanan profesional terpadu yang saya tawarkan untuk menunjang kelancaran administrasi dan operasional bisnis Anda.",
+    label: "04 — spesialisasi",
+    title: "Spesialisasi & Solusi Admin/IT",
+    desc: "Solusi dan spesialisasi profesional terpadu yang saya tawarkan untuk menunjang kelancaran administrasi dan operasional bisnis Anda.",
     list: [
       {
         type: "ADMINISTRATION",
